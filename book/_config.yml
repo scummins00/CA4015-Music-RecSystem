@@ -3,7 +3,6 @@
 
 title: CA4015 Music Recommender System
 author: Sean Cummins
-logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
