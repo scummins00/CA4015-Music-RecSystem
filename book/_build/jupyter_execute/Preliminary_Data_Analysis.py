@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Objective
+# # Preliminary Data Analysis
+# 
+# ## Objective
 # The following notebook aims to perform some preliminary data analysis on the last.fm dataset used at HetRec2011 which can be found [Here](https://grouplens.org/datasets/hetrec-2011/). We aim to perform the following analysis:
 # 
 # * **Missing Values**
@@ -22,7 +24,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# In[277]:
+# In[2]:
 
 
 #Let's view the user-artist data first
@@ -32,7 +34,7 @@ user_artist.head()
 
 # ## Missing Values
 
-# In[20]:
+# In[3]:
 
 
 #Test for the occurence of missing values
@@ -43,7 +45,7 @@ for file in os.listdir('../data/'):
         print(f'Reading file: {file} | Contains missing data: {df.isnull().values.any()}')
 
 
-# In[23]:
+# In[4]:
 
 
 #Investigating missing data in artists.dat
@@ -51,14 +53,14 @@ artists = pd.read_csv('../data/artists.dat', sep='\t', encoding='latin-1')
 artists.shape
 
 
-# In[30]:
+# In[5]:
 
 
 #Total number of rows in artists with missing values
 artists[artists.isna().any(axis=1)].shape
 
 
-# In[29]:
+# In[6]:
 
 
 #Columns in artists with missing values
@@ -66,7 +68,7 @@ for col in artists.columns:
     print(f'Column: {col} | Contains missing data: {artists[col].isnull().values.any()}')
 
 
-# In[365]:
+# In[7]:
 
 
 #Let's check that artist names and ID's are unique
@@ -81,7 +83,7 @@ print(artists.name.is_unique)
 
 # ## Data Distribution
 
-# In[241]:
+# In[8]:
 
 
 # Let's investigate how different genres are represented in our data
@@ -90,15 +92,21 @@ tags = pd.read_csv('../data/tags.dat', sep='\t', encoding='latin-1')
 tagged_artists.head()
 
 
-# In[252]:
+# In[19]:
 
 
 #Let's count the tags that appear
 tag_count = tagged_artists[['tagID', 'artistID']].groupby('tagID').count().reset_index()
 tag_count.rename({'artistID':'count'}, axis=1, inplace=True)
 
+#Find string text values
+tag_text = tag_count.merge(tags, on='tagID')
 
-# In[298]:
+#Extract top 20 tags
+top_20_tags = tag_text.sort_values(by='count', ascending=False).iloc[:20]
+
+
+# In[21]:
 
 
 # Initialize the matplotlib figure
@@ -115,7 +123,7 @@ plt.xlabel('Count')
 plt.show()
 
 
-# In[366]:
+# In[22]:
 
 
 #Let's investigate the distribution of number of total listens by users
@@ -128,7 +136,7 @@ listen_per_user['bin'] = pd.cut(listen_per_user.weight, 20, precision=2)
 count_per_bin = listen_per_user.groupby('bin').count()
 
 
-# In[367]:
+# In[23]:
 
 
 #Plot the bins
@@ -145,7 +153,7 @@ plt.xlabel('Number of Users')
 plt.show()
 
 
-# In[414]:
+# In[24]:
 
 
 #Same graph but as a conventional histogram
@@ -160,7 +168,7 @@ plt.grid(True)
 plt.show()
 
 
-# In[417]:
+# In[25]:
 
 
 # What portion of users are contained within the first bins

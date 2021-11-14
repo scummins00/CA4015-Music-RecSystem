@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Objective &#8212; CA4015 Music Recommender System</title>
+    <title>Preliminary Data Analysis &#8212; CA4015 Music Recommender System</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,7 +53,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,19 +89,9 @@
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Objective
+   Preliminary Data Analysis
   </a>
  </li>
 </ul>
@@ -210,6 +199,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objective">
+   Objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#missing-values">
    Missing Values
   </a>
@@ -249,8 +243,10 @@
         
               <div>
                 
-  <div class="section" id="objective">
-<h1>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="preliminary-data-analysis">
+<h1>Preliminary Data Analysis<a class="headerlink" href="#preliminary-data-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
 <p>The following notebook aims to perform some preliminary data analysis on the <a class="reference external" href="http://last.fm">last.fm</a> dataset used at HetRec2011 which can be found <a class="reference external" href="https://grouplens.org/datasets/hetrec-2011/">Here</a>. We aim to perform the following analysis:</p>
 <ul class="simple">
 <li><p><strong>Missing Values</strong></p>
@@ -279,7 +275,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_16712</span><span class="o">/</span><span class="mf">555797462.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_16580</span><span class="o">/</span><span class="mf">555797462.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -355,6 +351,7 @@
   </tbody>
 </table>
 </div></div></div>
+</div>
 </div>
 <div class="section" id="missing-values">
 <h2>Missing Values<a class="headerlink" href="#missing-values" title="Permalink to this headline">¶</a></h2>
@@ -538,61 +535,15 @@ True
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s count the tags that appear</span>
 <span class="n">tag_count</span> <span class="o">=</span> <span class="n">tagged_artists</span><span class="p">[[</span><span class="s1">&#39;tagID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;tagID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">tag_count</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;artistID&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Find string text values</span>
+<span class="n">tag_text</span> <span class="o">=</span> <span class="n">tag_count</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;tagID&#39;</span><span class="p">)</span>
+
+<span class="c1">#Extract top 20 tags</span>
+<span class="n">top_20_tags</span> <span class="o">=</span> <span class="n">tag_text</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>tagID</th>
-      <th>count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1729</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>212</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>301</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>582</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,15 +687,6 @@ The mean of user listening habits: 36566.58
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="notebooks.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Content with notebooks</p>
-            </div>
-        </a>
-    </div>
 
 </div>
         
