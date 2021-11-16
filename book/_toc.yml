@@ -5,3 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: Preliminary_Data_Analysis
+- file: bibliography
