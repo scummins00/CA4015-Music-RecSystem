@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# In[2]:
+# In[27]:
 
 
 #Let's view the user-artist data first
@@ -45,7 +45,7 @@ for file in os.listdir('../data/'):
         print(f'Reading file: {file} | Contains missing data: {df.isnull().values.any()}')
 
 
-# In[4]:
+# In[38]:
 
 
 #Investigating missing data in artists.dat
@@ -82,6 +82,16 @@ print(artists.name.is_unique)
 # ---
 
 # ## Data Distribution
+
+# In[42]:
+
+
+#Let's investigate how many users we have
+print(len(user_artist.userID.unique()))
+
+#Let's investigate the number of artists
+print(len(artists.id.unique()))
+
 
 # In[8]:
 
