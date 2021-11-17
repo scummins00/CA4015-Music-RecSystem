@@ -198,8 +198,8 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-factorisation">
-     Matrix Factorisation
+    <a class="reference internal nav-link" href="#matrix-factorisation-mf">
+     Matrix Factorisation (MF)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -223,17 +223,34 @@
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>Computer-based systems provide us with the opportunity of mining user history to reveal trends and personal preferences that they, and those around them, may not have previously realised <span id="id1">[<a class="reference internal" href="bibliography.html#id2">Ekstrand <em>et al.</em>, 2011</a>]</span>. A vast amount of research has been conducted on how to best recommend content to users and many methods have been proposed <span id="id2">[<a class="reference internal" href="bibliography.html#id4">Balabanović and Shoham, 1997</a>, <a class="reference internal" href="bibliography.html#id6">Guttman <em>et al.</em>, 1998</a>, <a class="reference internal" href="bibliography.html#id5">Pazzani, 1999</a>]</span>.</p>
-<p>In this research, we will be focusing on Collaborative Filtering <span id="id3">[<a class="reference internal" href="bibliography.html#id8">Su and Khoshgoftaar, 2009</a>, <a class="reference internal" href="bibliography.html#id7">Thorat <em>et al.</em>, 2015</a>]</span>, an approach that decides what to recommend to a user based on the preferences of similar users <span id="id4">[<a class="reference internal" href="bibliography.html#id9">Elahi <em>et al.</em>, 2016</a>, <a class="reference internal" href="bibliography.html#id8">Su and Khoshgoftaar, 2009</a>]</span>. Similarity between users is estimated by comparing user-interactions and ratings with products or services <a href="#id5"><span class="problematic" id="id6">:cite::`Elahi_Ricci_Rubens_2016, horat2015survey`</span></a>. The table below highlights some popular services currently using recommender systems.</p>
-<center>
-| Service         | Recommendations|
-| :-------------: |:--------------:|
-| Amazon          | Retail Products|
-| Facebook (Meta) | Friends        |
-| Netflix         | Movies / Shows |
-| Spotify         | Music          |
-| Youtube         | Videos         |
-| Google News     | News           |
-</center>
+<p>In this research, we will be focusing on Collaborative Filtering <span id="id3">[<a class="reference internal" href="bibliography.html#id8">Su and Khoshgoftaar, 2009</a>, <a class="reference internal" href="bibliography.html#id7">Thorat <em>et al.</em>, 2015</a>]</span>, an approach that decides what to recommend to a user based on the preferences of similar users <span id="id4">[<a class="reference internal" href="bibliography.html#id9">Elahi <em>et al.</em>, 2016</a>, <a class="reference internal" href="bibliography.html#id8">Su and Khoshgoftaar, 2009</a>]</span>. Similarity between users is estimated by comparing user-interactions and ratings with products or services <a href="#id5"><span class="problematic" id="id6">:cite::`Elahi_Ricci_Rubens_2016,horat2015survey`</span></a>. The table below highlights some popular services currently using recommender systems.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Service</p></th>
+<th class="text-align:center head"><p>Recommendations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Amazon</p></td>
+<td class="text-align:center"><p>Retail Products</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Facebook (Meta)</p></td>
+<td class="text-align:center"><p>Friends</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Netflix</p></td>
+<td class="text-align:center"><p>Movies / Shows</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Spotify</p></td>
+<td class="text-align:center"><p>Music</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Youtube</p></td>
+<td class="text-align:center"><p>Videos</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Google News</p></td>
+<td class="text-align:center"><p>News</p></td>
+</tr>
+</tbody>
+</table>
 <p>Recommending something to someone else is a natural process that aims to help somebody sift through a large corpus of information efficiently to find only the items of most interest to them. Recommender systems augment that process, and as such have become a vital tool for information-availability in our digital lifestyle <span id="id7">[<a class="reference internal" href="bibliography.html#id8">Su and Khoshgoftaar, 2009</a>]</span>.</p>
 <p>In the following Jupyter Book, we will be using data acquired from the <a class="reference external" href="https://grouplens.org/datasets/hetrec-2011/">HETREC 2011</a><span id="id8">[<a class="reference internal" href="bibliography.html#id3">Cantador <em>et al.</em>, 2011</a>]</span> 2nd International Workshop on Information Heterogeneity and Fusion in Recommender Systems. In particular, we will be focusing on the <em>artist listening records</em> dataset published by <a class="reference external" href="https://www.last.fm/">Last.FM</a>. This dataset consists of 92,800 artists listening records from 1,892 users. We will explore this data in more detail in <a class="reference internal" href="Preliminary_Data_Analysis.html"><span class="doc">Preliminary Data Analysis</span></a>. In the following section, we will discuss in-depth two approaches to Collaborative Filtering, namely; <em>Matrix Factorisation</em>, and <em>Recommendation with Deep Neural Networks</em>.</p>
 </div>
@@ -241,8 +258,9 @@
 <h1>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">¶</a></h1>
 <p>Collaborative Filtering (CF) was a term first coined by the makers of <em>Tapestry</em>, the first recommender system.
 CF aims to solve the problem of recommending <span class="math notranslate nohighlight">\(m\)</span> items, by <span class="math notranslate nohighlight">\(n\)</span> users where the data is often represented by a <span class="math notranslate nohighlight">\(n \times m\)</span> matrix <span id="id9">[<a class="reference internal" href="bibliography.html#id10">Laishram <em>et al.</em>, 2016</a>]</span>. There are two main approaches to CF, <em>neighborhood methods</em>, and <em>latent factor models</em>. The neighborhood methods compute the relationships between users, or alternatively items. Latent Factor models aim to characetrize users and items on many abstract factors infered from the rating patterns. The most successful realisations of latent factor models are based on <em>matrix facotrisation</em> (MF). <span id="id10">[]</span>. In this section, we will look at MF more closely, focusing on the aspects we will incorporate during our research.</p>
-<div class="section" id="matrix-factorisation">
-<h2>Matrix Factorisation<a class="headerlink" href="#matrix-factorisation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matrix-factorisation-mf">
+<h2>Matrix Factorisation (MF)<a class="headerlink" href="#matrix-factorisation-mf" title="Permalink to this headline">¶</a></h2>
+<p>In its basic form, MF characterises querys (users) and items by vectors which are inferred from rating patterns. High correspondance between query vector and item vector results in a recommendation. The most useful data from an MF model is <em>explicit</em> feedback. This constitutes explicit input from users regarding interest in items. We refer to this as <em>rating</em> <span id="id11">[]</span>. We will denote our user vector <span class="math notranslate nohighlight">\(U \in \mathbb{R}^{m \times d}\)</span>, and our item vector <span class="math notranslate nohighlight">\(V \in \mathbb{R}^{n \times d}\)</span></p>
 </div>
 <div class="section" id="deep-neural-networks">
 <h2>Deep Neural Networks<a class="headerlink" href="#deep-neural-networks" title="Permalink to this headline">¶</a></h2>
