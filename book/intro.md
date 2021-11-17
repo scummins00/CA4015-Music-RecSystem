@@ -2,7 +2,7 @@
 
 Computer-based systems provide us with the opportunity of mining user history to reveal trends and personal preferences that they, and those around them, may not have previously realised {cite}`ekstrand2011collaborative`. A vast amount of research has been conducted on how to best recommend content to users and many methods have been proposed {cite}`marko1997, pazzani1999framework,guttman1998agent`.
 
-In this research, we will be focusing on Collaborative Filtering {cite}`thorat2015survey,su2009survey`, an approach that decides what to recommend to a user based on the preferences of similar users {cite}`Elahi_Ricci_Rubens_2016,su2009survey`. Similarity between users is estimated by comparing user-interactions and ratings with products or services {cite:}`Elahi_Ricci_Rubens_2016,thorat2015survey`. The table below highlights some popular services currently using recommender systems.
+In this research, we will be focusing on Collaborative Filtering {cite}`thorat2015survey,su2009survey`, an approach that decides what to recommend to a user based on the preferences of similar users {cite}`Elahi_Ricci_Rubens_2016,su2009survey`. Similarity between users is estimated by comparing user-interactions and ratings with products or services {cite}`Elahi_Ricci_Rubens_2016,thorat2015survey`. The table below highlights some popular services currently using recommender systems.
 
 | Service         | Recommendations|
 | :-------------: |:--------------:|
@@ -35,5 +35,8 @@ In its basic form, MF characterises querys (users) and items by vectors which ar
 As stated previously, in MF, we are given the feedback matrix denoted $A \in \mathbb{R}^{m \times n}$, where $m$ is the number of queries and $n$ is the number of items. We will denote our user vector $U \in \mathbb{R}^{m \times d}$, and our item vector $V \in \mathbb{R}^{n \times d}$. We will use the product $UV^{T}$ as our approximation of $A$.
 
 Our objective function is then defined as follows: $$ \min _{U \in \mathbb{R}^{m \times d}, V \in \mathbb{R}^{n \times d}}\sum_{(i,j) \in obs} (A_{ij} - \langle U_{i},V_{j} \rangle)^{2}$$
+
+The two standard approaches to minimizing error in CF are *Alternating Least Squares* (ALS) {cite}`cichocki2007`, and *Stochaistic Gradient Descent* (SGD) {cite}`Rainer2011`. *Weighted Alternating Least Squares* (WALS) is a modified version of ALS that is suited to MF. In the literature, it is often cited that WALS is the prefered algorithm for recommender systems. This is because WALS is optimised for parallelization, meaning it is scalable to large scale data. As well as this, ALS performs better than SGD on systems centered on implicit data {cite}`Koren_Bell_Volinsky_2009,`. SGD cannot directly scale to very large data {cite}`Rainer2011`. Taking our own problem into consideration, either approach is suitable. The recognised benefits of WALS are not of interest to us as parallelization is out of the scope for this research. We have no information regarding intrinsic user data such as age, country, etc. Our dataset is also small enough that the performance of SGD is not severly hindered. Therefore, we will adopt SGD in this approach.
+
 
 ## Deep Neural Networks
