@@ -2,7 +2,7 @@
 
 Computer-based systems provide us with the opportunity of mining user history to reveal trends and personal preferences that they, and those around them, may not have previously realised {cite}`ekstrand2011collaborative`. A vast amount of research has been conducted on how to best recommend content to users and many methods have been proposed {cite}`marko1997, pazzani1999framework,guttman1998agent`.
 
-In this research, we will be focusing on Collaborative Filtering {cite}`thorat2015survey,su2009survey`, an approach that decides what to recommend to a user based on the preferences of similar users {cite}`Elahi_Ricci_Rubens_2016,su2009survey`. Similarity between users is estimated by comparing user-interactions and ratings with products or services {cite:}`Elahi_Ricci_Rubens_2016,horat2015survey`. The table below highlights some popular services currently using recommender systems.
+In this research, we will be focusing on Collaborative Filtering {cite}`thorat2015survey,su2009survey`, an approach that decides what to recommend to a user based on the preferences of similar users {cite}`Elahi_Ricci_Rubens_2016,su2009survey`. Similarity between users is estimated by comparing user-interactions and ratings with products or services {cite:}`Elahi_Ricci_Rubens_2016,thorat2015survey`. The table below highlights some popular services currently using recommender systems.
 
 | Service         | Recommendations|
 | :-------------: |:--------------:|
