@@ -22,6 +22,18 @@ Collaborative Filtering (CF) was a term first coined by the makers of *Tapestry*
 CF aims to solve the problem of recommending $m$ items, by $n$ users where the data is often represented by a $n \times m$ matrix {cite}`Laishram_Sahu_Padmanabhan_Udgata_2016`. There are two main approaches to CF, *neighborhood methods*, and *latent factor models*. The neighborhood methods compute the relationships between users, or alternatively items. Latent Factor models aim to characetrize users and items on many abstract factors infered from the rating patterns. The most successful realisations of latent factor models are based on *matrix facotrisation* (MF). {cite}`Koren_Bell_Volinsky_2009`. In this section, we will look at MF more closely, focusing on the aspects we will incorporate during our research.
 
 ## Matrix Factorisation (MF)
-In its basic form, MF characterises querys (users) and items by vectors which are inferred from rating patterns. High correspondance between query vector and item vector results in a recommendation. The most useful data from an MF model is *explicit* feedback. This constitutes explicit input from users regarding interest in items. We refer to this as *rating* {cite}`Koren_Bell_Volinsky_2009`. We will denote our user vector $U \in \mathbb{R}^{m \times d}$, and our item vector $V \in \mathbb{R}^{n \times d}$
+In its basic form, MF characterises querys (users) and items by vectors which are inferred from rating patterns. High correspondance between query vector and item vector results in a recommendation. The most useful data from an MF model is *explicit* feedback. This constitutes explicit input from users regarding interest in items. We refer to this as *rating* {cite}`Koren_Bell_Volinsky_2009`. The construction of query and item vectors intends to model user preferences as shown in the figure below.
+
+```{image} ../images/mf_latent_factors.png
+:alt: latent_factor_diagram
+:class: bg-primary mb-1
+:width: 200px
+:align: center
+:caption: Taken from {cite}`Koren_Bell_Volinsky_2009`
+```
+
+As stated previously, in MF, we are given the feedback matrix denoted $A \in \mathbb{R}^{m \times n}$, where $m$ is the number of queries and $n$ is the number of items. We will denote our user vector $U \in \mathbb{R}^{m \times d}$, and our item vector $V \in \mathbb{R}^{n \times d}$. We will use the product $UV^{T}$ as our approximation of $A$.
+
+Our objective function is then defined as follows: $$ \min _{U \in \mathbb{R}^{m \times d}, V \in \mathbb{R}^{n \times d}}\sum_{(i,j) \in obs} (A_{ij} - \langle U_{i},V_{j} \rangle)^{2}$$
 
 ## Deep Neural Networks
