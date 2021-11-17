@@ -24,7 +24,7 @@ CF aims to solve the problem of recommending $m$ items, by $n$ users where the d
 ## Matrix Factorisation (MF)
 In its basic form, MF characterises querys (users) and items by vectors which are inferred from rating patterns. High correspondance between query vector and item vector results in a recommendation. The most useful data from an MF model is *explicit* feedback. This constitutes explicit input from users regarding interest in items. We refer to this as *rating* {cite}`Koren_Bell_Volinsky_2009`. The construction of query and item vectors intends to model user preferences as shown in the figure below.
 
-```{image} ../images/mf_latent_factors.png
+```{image} images/mf_latent_factors.png
 :alt: latent_factor_diagram
 :class: bg-primary mb-1
 :width: 200px
