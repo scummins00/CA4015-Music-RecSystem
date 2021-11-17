@@ -29,7 +29,6 @@ In its basic form, MF characterises querys (users) and items by vectors which ar
 :class: bg-primary mb-1
 :width: 200px
 :align: center
-:caption: Taken from {cite}`Koren_Bell_Volinsky_2009`
 ```
 
 As stated previously, in MF, we are given the feedback matrix denoted $A \in \mathbb{R}^{m \times n}$, where $m$ is the number of queries and $n$ is the number of items. We will denote our user vector $U \in \mathbb{R}^{m \times d}$, and our item vector $V \in \mathbb{R}^{n \times d}$. We will use the product $UV^{T}$ as our approximation of $A$.
