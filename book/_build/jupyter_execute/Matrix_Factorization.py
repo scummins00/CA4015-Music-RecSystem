@@ -10,7 +10,13 @@
 import pandas as pd
 import numpy as np
 import tensorflow.compat.v1 as tf
+import collections
+from mpl_toolkits.mplot3d import Axes3D
+from IPython import display
+import sklearn
+import sklearn.manifold
 from matplotlib import pyplot as plt
+tf.compat.v1.disable_eager_execution()
 
 
 # In[2]:
@@ -31,21 +37,85 @@ pd.DataFrame.mask = mask
 pd.DataFrame.flatten_cols = flatten_cols
 
 
+# ## Feature Engineering
+
+# In the following cells, we will be re-mapping our user ID's to fit into a scale that is defined as being greater than 0, and less than or equal to the number of unique users. Currently, despite there being only 1,892 unique users, profiles exist with ID's such as 1,893, 2,000, and so on. Mapping our user ID's to a suitable scale is good practice and will avoid issues in the future.
+# 
+# The exact same principle will be applied to the artist ID's.
+
 # In[3]:
 
 
-#Let's define our amount of users and artists
+#Let's define our amount of users
 rating_matrix = pd.read_csv('../data/user_artists.dat', sep='\t', encoding='latin-1')
 num_users = len(rating_matrix.userID.unique())
 
+#Extract userID column
+userids = np.asarray(rating_matrix.userID)
+
+#Remap the column
+u_mapper, u_ind = np.unique(userids, return_inverse=True)
+
+
+# In[4]:
+
+
+#Let's define our amount of artists
 artists = pd.read_csv('../data/artists.dat', sep='\t', encoding='latin-1')
 num_artists = len(artists.id.unique())
+
+#Extract artistID column
+artistids = np.asarray(rating_matrix.artistID)
+
+#Remap the column
+a_mapper, a_ind = np.unique(artistids, return_inverse=True)
+
+
+# In[5]:
+
+
+#Assert that u_ind and userID column are of same size
+assert(len(u_ind) == len(rating_matrix.userID))
+
+#Assert that a_ind and artistID column are of same size
+assert(len(a_ind) == len(rating_matrix.artistID))
+
+
+# In[6]:
+
+
+# Let's replace old columns with new ind ones
+rating_matrix.userID = u_ind
+rating_matrix.artistID = a_ind
+
+#Let's ensure the max value is approriate
+assert(rating_matrix.userID.unique().max() == 1891)
+assert(rating_matrix.artistID.unique().max() == 17631)
+
+
+# In[7]:
+
+
+rating_matrix.describe()
+
+
+# Our 'ratings' value consists of the number of listens a user has for a particular artist. These values can range from 1 all the way up to 352,698. Having inputs that vary this greatly reduces the profficiency of our model. Therefore, we will normalise the values using Keras normalize, with `order=2`. This means the inputs are normalized so that the summation of the normalized inputs squared is equal to 1.
+
+# In[8]:
+
+
+#What is the max amount of listens
+print(f'The max value recorded: {rating_matrix.weight.max()}')
+
+
+#normalize the weight array
+rating_matrix.weight = tf.keras.utils.normalize(np.asarray(rating_matrix.weight), order=2)[0]
 
 
 # ## Sparse Representation of $A$
 # Let's define a helper function which will build a sparse representation of our ratings matrix $A$. We will use TensorFlow `SparseTensor` to generate our sparse representation.
 
-# In[4]:
+# In[9]:
 
 
 #Function to build sparse representation of rating matrix
@@ -64,26 +134,44 @@ def build_rating_sparse_tensor(ratings_df):
         dense_shape=[num_users, num_artists])
 
 
+# In[10]:
+
+
+# Utility to split the data into training and test sets.
+def split_dataframe(df, holdout_fraction=0.1):
+    """Splits a DataFrame into training and test sets.
+    Args:
+        df: a dataframe.
+        holdout_fraction: fraction of dataframe rows to use in the test set.
+    Returns:
+        train: dataframe for training
+        test: dataframe for testing
+    """
+    test = df.sample(frac=holdout_fraction, replace=False)
+    train = df[~df.index.isin(test.index)]
+    return train, test
+
+
 # ## Error Function
 # Let's define our error function. We will be using **Mean Square Error** (MSE).
 
-# In[5]:
+# In[11]:
 
 
-def sparse_mean_square_error(sparse_ratings, user_embeddings, movie_embeddings):
+def sparse_mean_square_error(sparse_ratings, query_embeddings, item_embeddings):
     """
     Args:
         sparse_ratings: A SparseTensor rating matrix, of dense_shape [N, M]
-        user_embeddings: A dense Tensor U of shape [N, k] where k is the embedding
+        query_embeddings: A dense Tensor U of shape [N, k] where k is the embedding
         dimension, such that U_i is the embedding of user i.
-        movie_embeddings: A dense Tensor V of shape [M, k] where k is the embedding
+        item_embeddings: A dense Tensor V of shape [M, k] where k is the embedding
         dimension, such that V_j is the embedding of movie j.
     Returns:
         A scalar Tensor representing the MSE between the true ratings and the
         model's predictions.
     """
     predictions = tf.gather_nd(
-        tf.matmul(user_embeddings, movie_embeddings, transpose_b=True),
+        tf.matmul(query_embeddings, item_embeddings, transpose_b=True),
         sparse_ratings.indices)
     loss = tf.losses.mean_squared_error(sparse_ratings.values, predictions)
     return loss
@@ -92,7 +180,7 @@ def sparse_mean_square_error(sparse_ratings, user_embeddings, movie_embeddings):
 # ## CFModel Helper Class
 # Below you will find a useful helper class for collaborative filtering extracted from the [Google Recommendation System Colab notebook](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&utm_campaign=colab-external&utm_medium=referral&utm_content=recommendation-systems#scrollTo=TOVDyYHgo4th). It is a simple class for training a CF Model using *Stochastic Gradient Descent* (SGD). As is explained in the introduction, we will not be using *Alternating Least Squares* (ALS) as the benefits of the algorithm will not be recognised in our approach.
 
-# In[6]:
+# In[12]:
 
 
 class CFModel(object):
@@ -175,7 +263,7 @@ class CFModel(object):
             return results
 
 
-# In[7]:
+# In[13]:
 
 
 def build_model(ratings, embedding_dim=3, init_stddev=1.):
@@ -210,6 +298,13 @@ def build_model(ratings, embedding_dim=3, init_stddev=1.):
         "movie_id": V
     }
     return CFModel(embeddings, train_loss, [metrics])
+
+
+# In[14]:
+
+
+model = build_model(rating_matrix, embedding_dim=30, init_stddev=0.5)
+model.train(num_iterations=1000, learning_rate=10.)
 
 
 # In[ ]:
