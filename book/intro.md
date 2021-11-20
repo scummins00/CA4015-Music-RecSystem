@@ -13,7 +13,7 @@ In this research, we will be focusing on Collaborative Filtering {cite}`thorat20
 | Youtube         | Videos         |
 | Google News     | News           |
 
-Recommending something to someone else is a natural process that aims to help somebody sift through a large corpus of information efficiently to find only the items of most interest to them. Recommender systems augment that process, and as such have become a vital tool for information-availability in our digital lifestyle {cite}`su2009survey`.
+Recommending something to someone else is a natural process that aims to help somebody sift through a large corpus of information efficiently to find only the items of most interest to them. Recommender systems augment that process, and as such have become a vital tool for information-availability in our increasingly digital lives {cite}`su2009survey`.
 
 In the following Jupyter Book, we will be using data acquired from the [HETREC 2011](https://grouplens.org/datasets/hetrec-2011/){cite}`cantador2011second` 2nd International Workshop on Information Heterogeneity and Fusion in Recommender Systems. In particular, we will be focusing on the *artist listening records* dataset published by [Last.FM](https://www.last.fm/). This dataset consists of 92,800 artists listening records from 1,892 users. We will explore this data in more detail in {doc}`./Preliminary_Data_Analysis`. In the following section, we will discuss in-depth two approaches to Collaborative Filtering, namely; *Matrix Factorisation*, and *Recommendation with Deep Neural Networks*.
 
@@ -27,13 +27,13 @@ In its basic form, MF characterises querys (users) and items by vectors which ar
 ```{image} images/mf_latent_factors.png
 :alt: latent_factor_diagram
 :class: bg-primary mb-1
-:width: 200px
+:width: 40%
 :align: center
 ```
 
 As stated previously, in MF, we are given the feedback matrix denoted $A \in \mathbb{R}^{m \times n}$, where $m$ is the number of queries and $n$ is the number of items. We will denote our user vector $U \in \mathbb{R}^{m \times d}$, and our item vector $V \in \mathbb{R}^{n \times d}$. We will use the product $UV^{T}$ as our approximation of $A$.
 
-Our objective function is then defined as follows: $$ \min _{U \in \mathbb{R}^{m \times d}, V \in \mathbb{R}^{n \times d}}\sum_{(i,j) \in obs} (A_{ij} - \langle U_{i},V_{j} \rangle)^{2}$$
+Our objective function is then defined as follows: $$\min _{U \in \mathbb{R}^{m \times d}, V \in \mathbb{R}^{n \times d}}\sum_{(i,j) \in obs} (A_{ij} - \langle U_{i},V_{j} \rangle)^{2}$$
 
 The two standard approaches to minimizing error in CF are *Alternating Least Squares* (ALS) {cite}`cichocki2007`, and *Stochaistic Gradient Descent* (SGD) {cite}`Rainer2011`. *Weighted Alternating Least Squares* (WALS) is a modified version of ALS that is suited to MF. In the literature, it is often cited that WALS is the prefered algorithm for recommender systems. This is because WALS is optimised for parallelization, meaning it is scalable to large scale data. As well as this, ALS performs better than SGD on systems centered on implicit data {cite}`Koren_Bell_Volinsky_2009,`. SGD cannot directly scale to very large data {cite}`Rainer2011`. Taking our own problem into consideration, either approach is suitable. The recognised benefits of WALS are not of interest to us as parallelization is out of the scope for this research. We have no information regarding intrinsic user data such as age, country, etc. Our dataset is also small enough that the performance of SGD is not severly hindered. Therefore, we will adopt SGD in this approach.
 
