@@ -52,7 +52,7 @@ pd.DataFrame.flatten_cols = flatten_cols
 # 
 # The case is the same for artist ID's with them not being presented in a contiguous order. We will apply the same principal above to remap our artist ID's to the correct scale.
 
-# In[178]:
+# In[4]:
 
 
 #Let's define our amount of users
@@ -66,7 +66,7 @@ userids = np.asarray(rating_matrix.userID)
 u_mapper, u_ind = np.unique(userids, return_inverse=True)
 
 
-# In[179]:
+# In[5]:
 
 
 #Let's define our amount of artists
@@ -81,7 +81,7 @@ artistids = np.asarray(rating_matrix.artistID)
 a_mapper, a_ind = np.unique(artistids, return_inverse=True)
 
 
-# In[180]:
+# In[6]:
 
 
 #Assert that u_ind and userID column are of same size
@@ -91,7 +91,7 @@ assert(len(u_ind) == len(rating_matrix.userID))
 assert(len(a_ind) == len(rating_matrix.artistID))
 
 
-# In[181]:
+# In[7]:
 
 
 # Let's replace old columns with new ind ones
@@ -112,14 +112,14 @@ assert(rating_matrix.artistID.unique().max() == 17631)
 # 
 # Another approach is to use a binary representation of the ratings matrix. If a user has ever listened to an artist, the 'listened' column receives a value of 1. Otherwise, the value is 0. This approach does result in some information loss, as we are no longer aware of how regular of a listener a user is to a particular artist.
 
-# In[182]:
+# In[8]:
 
 
 #We're going to make a binary representation of the matrix. If the user ever listened to the artist, they get a value of 1. 0 otherwise
 rating_matrix['listened'] = 1.0
 
 
-# In[183]:
+# In[9]:
 
 
 rating_matrix.describe()
@@ -130,7 +130,7 @@ rating_matrix.describe()
 # 
 # We must firstly merge the `tags.dat` data with the `user_taggedartists.dat` data. We then `groupby` artist name and use a lambda function to list the genres for that artist. It should be noted that `user_taggedartists.dat` is user-generated information, and therefore may contain some innacurate or unimportant artist tags. To counteract this, we will only be including a tag as part of the artists genre if it has been associated with that artist on 3 or more seperate occasions.
 
-# In[184]:
+# In[10]:
 
 
 #Let's read in genres and tags
@@ -138,7 +138,7 @@ genres = pd.read_csv('../data/tags.dat', sep='\t', encoding='latin-1')
 artists_tagged = pd.read_csv('../data/user_taggedartists.dat', sep='\t', encoding='latin-1')
 
 
-# In[185]:
+# In[11]:
 
 
 #Let's match artists to genres
@@ -153,7 +153,7 @@ artists_tagged = (artists_tagged.groupby('artistID')['tagValue'].apply(lambda gr
 # 1. Order the artist tags by number of appearances and save them in a `new_tags` variable.
 # 1. The artist receives the `new_tags` variable ("No Tags" string if list is empty.)
 
-# In[186]:
+# In[12]:
 
 
 for index, row in artists_tagged.iterrows():
@@ -173,7 +173,7 @@ for index, row in artists_tagged.iterrows():
         artists_tagged.at[index, 'genre'] = artists_tagged.at[index, 'tagValue'][0]
 
 
-# In[187]:
+# In[13]:
 
 
 #Let's add these tags to our artists
@@ -184,7 +184,7 @@ artists.drop(columns=['artistIDright', 'url', 'pictureURL'], inplace=True)
 artists.rename(columns={'tagValue': 'genres'}, inplace=True)
 
 
-# In[188]:
+# In[14]:
 
 
 artists
@@ -193,7 +193,7 @@ artists
 # ### Artist Total Listens Value
 # Later on we will use an artists total number of listens as part of our visualisations.
 
-# In[109]:
+# In[15]:
 
 
 #Let's groupby artist ID and sum weight for their total listens
@@ -210,7 +210,7 @@ artist_tot_listens = artist_tot_listens.join(other=artists, lsuffix='artistID', 
 # 
 # The helper functions in `CFUtils.py`, and the `CFModel` class provided in `CFModel.py` were designed specifically for [Recommendation System Colab](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&utm_campaign=colab-external&utm_medium=referral&utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt), meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.
 
-# In[59]:
+# In[16]:
 
 
 # Build the CF model and train it.
