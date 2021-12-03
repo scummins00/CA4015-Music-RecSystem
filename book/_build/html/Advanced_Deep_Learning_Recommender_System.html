@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Deep Learning Recommender System &#8212; CA4015 Music Recommender System</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="bibliography.html" />
+    <link rel="prev" title="Deep Neural Network Recommender System" href="Deep_Learning_Recommender_System.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">CA4015 Music Recommender System</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preliminary_Data_Analysis.html">
+   Preliminary Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Matrix_Factorization.html">
+   Collaborative Filtering - Matrix Factorization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep_Learning_Recommender_System.html">
+   Deep Neural Network Recommender System
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Advanced Deep Learning Recommender System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Advanced_Deep_Learning_Recommender_System.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAdvanced_Deep_Learning_Recommender_System.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Advanced_Deep_Learning_Recommender_System.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accounting-for-tag-information">
+   Accounting for Tag Information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing">
+   Data Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#artist-preprocessing">
+   Artist Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-development">
+   Model Development
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instantiate-interaction-dictionary">
+     Instantiate Interaction Dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#timestamp-normalisation">
+     Timestamp Normalisation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lookup-tables-training-test-data-split">
+     Lookup Tables &amp; Training, Test Data Split
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-creation">
+   Model Creation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#user-model">
+     User Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#item-model">
+     Item Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-models">
+     Combining Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-fitting-and-evaluation">
+     Model Fitting and Evaluation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-analysis">
+     Output Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="advanced-deep-learning-recommender-system">
+<h1>Advanced Deep Learning Recommender System<a class="headerlink" href="#advanced-deep-learning-recommender-system" title="Permalink to this headline">¶</a></h1>
+<p>In the following notebook, we will be creating another Deep-Learning Recommender using Tensorflow V2. For this iteration, we will try to incorporate text and timestamp data available to us. As already stated multiple times, the tags in this data are user-generated. Therefore, they are messy, inconsistent, and may not be entirely accurate and or useful.</p>
+<p>The TFRS package is incredibly robust, and offers plenty of direction for expansion of recommender systems. The library can tokenize text and timestamps into features. It processes text into a ‘bag-of-words’ representation, which it can then use to find similarities. It will be interesting to see if this approach alters recommendations to be affected more by the genre or tags associated with artists.</p>
+<p>Similarly, it will be interesting to see how the inclusion of temporal data changes recommendations. In our data, a timestamp is associated with a <em>user</em>, <em>artist</em>, and <em>tag</em>. It indicates the exact time that particular user gave that artist that tag. It is entirely possible that amongst the tag information users who do not like particular artists have left negative tags. I wonder if an association will be made between few listens (<em>low weight</em>) and particular tag tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Text</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">tensorflow_recommenders</span> <span class="k">as</span> <span class="nn">tfrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="accounting-for-tag-information">
+<h2>Accounting for Tag Information<a class="headerlink" href="#accounting-for-tag-information" title="Permalink to this headline">¶</a></h2>
+<p>In the following cell, we will prove that in our data, users can tag the same artist multiple times. Preferably, we would like only 1 tag for any user-artist association. We will order a user-artist tags dataset by their creation time and use the most recent tag and timestamp for each user-artist combination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s read in genres and tags</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/tags.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">user_tagging</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/user_taggedartists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">user_tagging_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/user_taggedartists-timestamps.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+
+<span class="c1">#Check if duplicates are present</span>
+<span class="k">if</span> <span class="kc">True</span> <span class="ow">in</span> <span class="n">user_tagging_time</span><span class="p">[[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contains Duplicate user-artist combinations.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains Duplicate user-artist combinations.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_tag_a</span> <span class="o">=</span> <span class="n">user_tagging</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tags</span><span class="p">[[</span><span class="s1">&#39;tagID&#39;</span><span class="p">,</span> <span class="s1">&#39;tagValue&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;tagID&#39;</span><span class="p">)</span>
+<span class="n">u_tag_a</span> <span class="o">=</span> <span class="n">u_tag_a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">user_tagging_time</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="s1">&#39;tagID&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Displaying 3 random samples for tag data:&quot;</span><span class="p">)</span>
+<span class="n">u_tag_a</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 3 random samples for tag data:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userID</th>
+      <th>artistID</th>
+      <th>tagID</th>
+      <th>day</th>
+      <th>month</th>
+      <th>year</th>
+      <th>tagValue</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>166819</th>
+      <td>771</td>
+      <td>271</td>
+      <td>5394</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>lamangous hiphop</td>
+      <td>1270072800000</td>
+    </tr>
+    <tr>
+      <th>22205</th>
+      <td>1433</td>
+      <td>3070</td>
+      <td>25</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2007</td>
+      <td>80s</td>
+      <td>1180648800000</td>
+    </tr>
+    <tr>
+      <th>165165</th>
+      <td>692</td>
+      <td>2459</td>
+      <td>3779</td>
+      <td>1</td>
+      <td>8</td>
+      <td>2009</td>
+      <td>novelty</td>
+      <td>1249077600000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Group by user-artist combo, sort by timestamp and extract that tagValue</span>
+<span class="n">u_tag_a</span> <span class="o">=</span> <span class="n">u_tag_a</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s check if this dataset contains duplicate user-artist combinations</span>
+<span class="k">if</span> <span class="kc">True</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">u_tag_a</span><span class="p">[[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contains Duplicate user-artist combinations.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Does not contain Duplicate user-artist combinations.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Does not contain Duplicate user-artist combinations.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Our preprocessing steps are as before for the most part. For a final step, we will merge our tag information dataset with our ratings matrix. To start, we normalise our weight column as previous.</p>
+<p>There will be many cases where a user listens to a particular artist, but never provides that artist with a tag. In those cases, we will let the tag value be <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">tag</span></code>, and for the corresponding timestamp value, we will use a value corresponding to today. We obviously want our model to find associations between users and common tags. However, our model can also build associations in situations where a user has decided to not provide a tag.</p>
+<p>The timestamps provided in the dataset do not correspond to the correct year and must have the final 3 digits removed. For this, we can just divide them all by 1,000. Using <a class="reference external" href="https://timestamp.online/">this website</a>, I entered some of the corrected timestamps to ensure they do indeed correspond to the appropriate year. All entries I checked returned values around 2008 to 2011, which makes sense for this dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1">#Correct timestamp data in u_tag_a</span>
+<span class="n">u_tag_a</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_tag_a</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s define our amount of users</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/user_artists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">num_users</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s normalise our weight column per user</span>
+<span class="n">new_rating_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">user_ratings</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">]</span>
+    <span class="n">ratings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">])</span>
+    <span class="n">user_ratings</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">ratings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_rating_matrix</span> <span class="o">=</span> <span class="n">new_rating_matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">)</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">new_rating_matrix</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\seanc\AppData\Local\Temp/ipykernel_15160/1239368141.py:6: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  user_ratings[&#39;weight&#39;] = tf.keras.utils.normalize(ratings, axis=-1, order=2)[0]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>92834.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.091235</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.109804</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000008</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.030397</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.062543</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.109109</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s use left merge to merge our tag data and rating matrix</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">u_tag_a</span><span class="p">[[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="s1">&#39;tagValue&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">]],</span>
+                                    <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="c1">#Get today&#39;s timestamp</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+<span class="c1">#Fill missing values as stated</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">tagValue</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[</span><span class="s1">&#39;tagValue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;no tag&#39;</span><span class="p">)</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Displaying Sample of new Rating Matrix&quot;</span><span class="p">)</span>
+<span class="n">rating_matrix</span><span class="p">[</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">tagValue</span> <span class="o">!=</span> <span class="s1">&#39;no tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying Sample of new Rating Matrix
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userID</th>
+      <th>artistID</th>
+      <th>weight</th>
+      <th>tagValue</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>35651</th>
+      <td>779</td>
+      <td>9978</td>
+      <td>0.034552</td>
+      <td>german</td>
+      <td>1.267398e+12</td>
+    </tr>
+    <tr>
+      <th>26720</th>
+      <td>580</td>
+      <td>6602</td>
+      <td>0.085549</td>
+      <td>emo</td>
+      <td>1.214863e+12</td>
+    </tr>
+    <tr>
+      <th>83173</th>
+      <td>1879</td>
+      <td>1980</td>
+      <td>0.058302</td>
+      <td>alternative</td>
+      <td>1.251756e+12</td>
+    </tr>
+    <tr>
+      <th>70209</th>
+      <td>1582</td>
+      <td>10799</td>
+      <td>0.154664</td>
+      <td>totalmente foda</td>
+      <td>1.207001e+12</td>
+    </tr>
+    <tr>
+      <th>3484</th>
+      <td>74</td>
+      <td>2050</td>
+      <td>0.024876</td>
+      <td>caruso</td>
+      <td>1.238537e+12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The small sample above gives an indication for some of the values we can expect to find for tags. There is a large amount of distinct values in our tag data. It will be interesting to see how the recommender system interprets these.</p>
+<p>The below pre-processing steps are as before in our other notebooks. We are correcting the scale of user and artist ID’s, then ensuring their maximum values are appropriate before replacing the columns in our rating matrix.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="artist-preprocessing">
+<h2>Artist Preprocessing<a class="headerlink" href="#artist-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>To make use of the tags generally associated with artists, we will calculate their most popular tag in our data. We will use this information later on when developing our candidate model. The function in the cell below performs as previous. Essentially, it finds the most popular tag for each artist and attaches it to their profile.</p>
+<p>We will add this extra information to our ratings matrix, as well as the artists name. Using the artist name as an identifier will make more sense to us than an ID number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s match artists to genres</span>
+<span class="n">artists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/artists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">artists_tagged</span> <span class="o">=</span> <span class="n">user_tagging</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tags</span><span class="p">[[</span><span class="s1">&#39;tagID&#39;</span><span class="p">,</span> <span class="s1">&#39;tagValue&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;tagID&#39;</span><span class="p">)</span>
+<span class="n">artists_tagged</span> <span class="o">=</span> <span class="p">(</span><span class="n">artists_tagged</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;artistID&#39;</span><span class="p">)[</span><span class="s1">&#39;tagValue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">grp</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">grp</span><span class="p">)))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1">#This function performs as previous.</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">artists_tagged</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">new_tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">tagValue</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">3</span><span class="p">:</span>
+            <span class="n">new_tags</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+    <span class="n">new_tags</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">new_tags</span><span class="p">:</span>
+        <span class="n">artists_tagged</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;tagValue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">new_tags</span><span class="p">]</span>
+        <span class="n">artists_tagged</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">artists_tagged</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;tagValue&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+<span class="c1">#Let&#39;s add these tags to our artists</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;artistID&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">artists</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">artists_tagged</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rsuffix</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">tagValue</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">tagValue</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No Tags&#39;</span><span class="p">)</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">genre</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">genre</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No Tags&#39;</span><span class="p">)</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;tagValue&#39;</span><span class="p">:</span> <span class="s1">&#39;genres&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We add the extra info to our ratings matrix</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">artists</span><span class="p">[[</span><span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;genre&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;artistID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Extract userID column</span>
+<span class="n">userids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="p">)</span>
+
+<span class="c1">#Remap the column</span>
+<span class="n">u_mapper</span><span class="p">,</span> <span class="n">u_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">userids</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Let&#39;s define our amount of artists</span>
+<span class="n">artists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/artists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;artistID&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">num_artists</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">artists</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1">#Extract artistID column</span>
+<span class="n">artistids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="p">)</span>
+
+<span class="c1">#Remap the column</span>
+<span class="n">a_mapper</span><span class="p">,</span> <span class="n">a_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">artistids</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s replace old columns with new ind ones</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="n">u_ind</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span> <span class="o">=</span> <span class="n">a_ind</span>
+
+<span class="c1">#Let&#39;s ensure the max value is approriate</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1891</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">17631</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We convert the ID&#39;s to string so we can use the StringLookup function later</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userID</th>
+      <th>artistID</th>
+      <th>weight</th>
+      <th>tagValue</th>
+      <th>timestamp</th>
+      <th>name</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>73024</th>
+      <td>693</td>
+      <td>5452</td>
+      <td>0.054310</td>
+      <td>korea</td>
+      <td>1270072800000</td>
+      <td>SS501</td>
+      <td>No Tags</td>
+    </tr>
+    <tr>
+      <th>40776</th>
+      <td>672</td>
+      <td>983</td>
+      <td>0.036924</td>
+      <td>no tag</td>
+      <td>1638562992</td>
+      <td>Chris Rea</td>
+      <td>electronic</td>
+    </tr>
+    <tr>
+      <th>4559</th>
+      <td>1590</td>
+      <td>151</td>
+      <td>0.058214</td>
+      <td>no tag</td>
+      <td>1638562992</td>
+      <td>Michael Jackson</td>
+      <td>new wave</td>
+    </tr>
+    <tr>
+      <th>28735</th>
+      <td>1651</td>
+      <td>534</td>
+      <td>0.034917</td>
+      <td>no tag</td>
+      <td>1638562992</td>
+      <td>Fall Out Boy</td>
+      <td>hip-hop</td>
+    </tr>
+    <tr>
+      <th>80249</th>
+      <td>871</td>
+      <td>8458</td>
+      <td>0.078178</td>
+      <td>no tag</td>
+      <td>1638562992</td>
+      <td>The Cooper Temple Clause</td>
+      <td>No Tags</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="model-development">
+<h2>Model Development<a class="headerlink" href="#model-development" title="Permalink to this headline">¶</a></h2>
+<p>We will perform the steps to developing a model as previous. However, we will now utilise our tags and timestamps. We do this by instantiating our interactions dictionary and including the extra features.</p>
+<div class="section" id="instantiate-interaction-dictionary">
+<h3>Instantiate Interaction Dictionary<a class="headerlink" href="#instantiate-interaction-dictionary" title="Permalink to this headline">¶</a></h3>
+<p>Our interactions dictionary is just our rating matrix. It contains the following features <code class="docutils literal notranslate"><span class="pre">userID</span></code>, <code class="docutils literal notranslate"><span class="pre">artistID</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code>, <code class="docutils literal notranslate"><span class="pre">tag</span></code>, <code class="docutils literal notranslate"><span class="pre">genre</span></code>, and <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>. We create a mapping for our dictionary below. We also create seperate individual mappings for artist ID’s, tags, and genres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s build our interactions dictionary as previous</span>
+<span class="n">interactions_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">interactions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">interactions_dict</span><span class="p">)</span>
+
+<span class="n">items_dict</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[[</span><span class="s1">&#39;artistID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">items_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">items_dict</span><span class="p">)</span>
+
+<span class="n">names_dict</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">names_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">names_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">names_dict</span><span class="p">)</span>
+
+<span class="n">tags_dict</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[[</span><span class="s1">&#39;tagValue&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">tags_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">tags_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">tags_dict</span><span class="p">)</span>
+
+<span class="n">genre_dict</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[[</span><span class="s1">&#39;genre&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">genre_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">genre_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">genres</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">genre_dict</span><span class="p">)</span>
+
+<span class="n">interactions</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s1">&#39;userID&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">],</span> 
+                                            <span class="s1">&#39;artistID&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;artistID&#39;</span><span class="p">],</span> 
+                                            <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                                            <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]),</span>
+                                            <span class="s1">&#39;tag&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;tagValue&#39;</span><span class="p">],</span>
+                                            <span class="s1">&#39;genre&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">],</span>
+                                            <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">],})</span>
+
+<span class="c1">#artists = names.map(lambda x: x[&#39;name&#39;])</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;artistID&#39;</span><span class="p">])</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;tagValue&#39;</span><span class="p">])</span>
+<span class="n">genres</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="timestamp-normalisation">
+<h3>Timestamp Normalisation<a class="headerlink" href="#timestamp-normalisation" title="Permalink to this headline">¶</a></h3>
+<p>As timestamps are represented as large integers, they are not healthy to use as direct input into our model. We firstly normalise our timestamps by calculaitng our minimum and maximum timestamp, then creating buckets at equal intervals between these two times. We instantiate 1000 buckets which are used to host our timestamps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s create bins for our timestamps</span>
+<span class="n">max_timestamp</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">maximum</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">min_timestamp</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mf">1e9</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">minimum</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="n">timestamp_buckets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">min_timestamp</span><span class="p">,</span> <span class="n">max_timestamp</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">1000</span><span class="p">,)</span>
+
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lookup-tables-training-test-data-split">
+<h3>Lookup Tables &amp; Training, Test Data Split<a class="headerlink" href="#lookup-tables-training-test-data-split" title="Permalink to this headline">¶</a></h3>
+<p>In the following cell, we define various lookup tables which we may use later on. We also shuffle our data and create testing and training batches which will be fed into our model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get unique item and user id&#39;s as a lookup table</span>
+<span class="n">unique_artist_ids</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">a_ind</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">unique_user_ids</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">u_ind</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">unique_genre_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">genre</span><span class="p">)</span>
+<span class="n">unique_user_tags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">tagValue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly shuffle data and split between train and test.</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">shuffled</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">reshuffle_each_iteration</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">62_000</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">62_000</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">30_000</span><span class="p">)</span>
+
+<span class="n">cached_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">62_000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">5_000</span><span class="p">)</span>
+<span class="n">cached_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">2_500</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;our test set is: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;our train set is: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>our test set is: 62000
+our train set is: 30000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-creation">
+<h2>Model Creation<a class="headerlink" href="#model-creation" title="Permalink to this headline">¶</a></h2>
+<p>The below cells host a more complex version of the model we saw previously. In our previous model, we simply instantiated our user and item embeddings as we would in a regular collaborative filtering model. In this instance, we further develop our user and item models.</p>
+<hr class="docutils" />
+<div class="section" id="user-model">
+<h3>User Model<a class="headerlink" href="#user-model" title="Permalink to this headline">¶</a></h3>
+<p>In the below cell, we develop our user model. We incorporate the user ID, as well as the timestamp data. As the timestamp data signifies when a user provided a tag to an artist, it is more suitably found in the user model.</p>
+<p>In our user model, we have included a parameter, <code class="docutils literal notranslate"><span class="pre">_use_timestamps</span></code>. When set to true, the model incorporates time stamp information. This will allow us to compare the results of the model with, or without the use of timestamps.</p>
+<p>In our dataset, it’s hard to interpret the utility of timestamps. This is because timestamp information is related to when the user-provided tags were actually applied to the artist, rather than when the user posted the tag. Also, there is an argument that including timestamps of today’s date may have negative effects on the model. This model is trained on information from 2009 to 2011, essentially making it a model of that period. Timestamps from today allow the model to ‘see into the future’, which is obviously not a realistic trait of ML models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### user model</span>
+
+<span class="k">class</span> <span class="nc">UserModel</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">use_timestamps</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">max_tokes</span><span class="o">=</span><span class="mi">25_000</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_use_timestamps</span> <span class="o">=</span> <span class="n">use_timestamps</span>
+
+        <span class="c1">## embed user id from unique_user_ids</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_user_ids</span><span class="p">),</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_user_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+        <span class="p">])</span>
+        
+        <span class="c1">## embed timestamp</span>
+        <span class="k">if</span> <span class="n">use_timestamps</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp_embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+              <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Discretization</span><span class="p">(</span><span class="n">timestamp_buckets</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+              <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_buckets</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+            <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">normalized_timestamp</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Normalization</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">normalized_timestamp</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">timestamps</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_timestamps</span><span class="p">:</span>
+              <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">])</span>
+
+        <span class="c1">## all features here</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">]),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp_embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]),</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalized_timestamp</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+        <span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="item-model">
+<h3>Item Model<a class="headerlink" href="#item-model" title="Permalink to this headline">¶</a></h3>
+<p>Our item model incorporates our artist ID as before. However, it also makes use of the genre associated with the artist.</p>
+<p>To make use of genre strings, we must first instantiate our <code class="docutils literal notranslate"><span class="pre">genre_vectorizer</span></code>. This will allow us to convert our genre string into a numerical representation. The <code class="docutils literal notranslate"><span class="pre">genre_vectorizer</span></code> is then used by our <code class="docutils literal notranslate"><span class="pre">genre_text_embedding</span></code> processing step to create an embedding of this word vector. Word embeddings allow us to measure similarity between text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### candidate model</span>
+
+<span class="k">class</span> <span class="nc">ItemModel</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">max_tokens</span> <span class="o">=</span> <span class="mi">10_000</span>
+        
+        <span class="c1">## embed artist id from unique_artist_ids</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">artist_embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_artist_ids</span><span class="p">),</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_artist_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">),])</span>
+        
+        <span class="c1">## processing text features: item genre vectorizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">artist_vectorizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">TextVectorization</span><span class="p">(</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">)</span>
+
+        <span class="c1">## we apply genre vectorizer to genres</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">artist_text_embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">artist_vectorizer</span><span class="p">,</span>
+                              <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                              <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling1D</span><span class="p">(),])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">artist_vectorizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">genres</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">artist_embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;artistID&quot;</span><span class="p">]),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">artist_text_embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;genre&quot;</span><span class="p">]),],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combining-models">
+<h3>Combining Models<a class="headerlink" href="#combining-models" title="Permalink to this headline">¶</a></h3>
+<p>The following cell is our parent model which we use to combine the output of both our User and Item models. We feed the outputs of each model into two dense embedding layers both of the same shape (<em>32</em>).</p>
+<p>We then define our task (in this case FactorizedTopK), then compute the loss as we did previously.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MusicModel</span><span class="p">(</span><span class="n">tfrs</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">use_timestamps</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1">## query model is user model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                          <span class="n">UserModel</span><span class="p">(</span><span class="n">use_timestamps</span><span class="p">),</span>
+                          <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
+        
+        <span class="c1">## candidate model is the item model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">candidate_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                              <span class="n">ItemModel</span><span class="p">(),</span>
+                              <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
+        
+        <span class="c1">## retrieval task, choose metrics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">tfrs</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Retrieval</span><span class="p">(</span>
+                    <span class="n">metrics</span><span class="o">=</span><span class="n">tfrs</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">FactorizedTopK</span><span class="p">(</span>
+                        <span class="n">candidates</span><span class="o">=</span><span class="n">items</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidate_model</span><span class="p">),),)</span>
+
+    <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="c1"># We only pass the user id and timestamp features into the query model. This</span>
+        <span class="c1"># is to ensure that the training inputs would have the same keys as the</span>
+        <span class="c1"># query inputs. Otherwise the discrepancy in input structure would cause an</span>
+        <span class="c1"># error when loading the query model after saving it.</span>
+        
+        <span class="n">query_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_model</span><span class="p">({</span> <span class="s2">&quot;userID&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">],</span>
+                                               <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">],</span>
+                                                <span class="s2">&quot;tag&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">],</span>
+                                            <span class="p">})</span>
+        
+        <span class="n">item_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidate_model</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;genre&quot;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">query_embeddings</span><span class="p">,</span> <span class="n">item_embeddings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-fitting-and-evaluation">
+<h3>Model Fitting and Evaluation<a class="headerlink" href="#model-fitting-and-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>In the following cells, we will perform two different fitting and evaluation scenarios: <span class="math notranslate nohighlight">\((a)\)</span> <code class="docutils literal notranslate"><span class="pre">_use_timestamps</span> <span class="pre">=</span> <span class="pre">True</span></code>, and <span class="math notranslate nohighlight">\((b)\)</span> <code class="docutils literal notranslate"><span class="pre">_use_timestamps</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MusicModel</span><span class="p">(</span><span class="n">use_timestamps</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cached_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">cached_test</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+~\AppData\Local\Temp/ipykernel_15160/2711739428.py in &lt;module&gt;
+----&gt; 1 model = MusicModel(use_timestamps=False)
+      2 model.compile(optimizer=tf.keras.optimizers.Adagrad(0.1))
+      3 model.fit(cached_train, epochs=3)
+      4 model.evaluate(cached_test, return_dict=True)
+
+~\AppData\Local\Temp/ipykernel_15160/2758195486.py in __init__(self, use_timestamps)
+     16         self.task = tfrs.tasks.Retrieval(
+     17                     metrics=tfrs.metrics.FactorizedTopK(
+---&gt; 18                         candidates=items.batch(128).map(self.candidate_model),),)
+     19 
+     20     def compute_loss(self, features, training=False):
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py in map(self, map_func, num_parallel_calls, deterministic, name)
+   2002         warnings.warn(&quot;The `deterministic` argument has no effect unless the &quot;
+   2003                       &quot;`num_parallel_calls` argument is specified.&quot;)
+-&gt; 2004       return MapDataset(self, map_func, preserve_cardinality=True, name=name)
+   2005     else:
+   2006       return ParallelMapDataset(
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py in __init__(self, input_dataset, map_func, use_inter_op_parallelism, preserve_cardinality, use_legacy_function, name)
+   5453     self._use_inter_op_parallelism = use_inter_op_parallelism
+   5454     self._preserve_cardinality = preserve_cardinality
+-&gt; 5455     self._map_func = StructuredFunctionWrapper(
+   5456         map_func,
+   5457         self._transformation_name(),
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py in __init__(self, func, transformation_name, dataset, input_classes, input_shapes, input_types, input_structure, add_to_graph, use_legacy_function, defun_kwargs)
+   4531         fn_factory = trace_tf_function(defun_kwargs)
+   4532 
+-&gt; 4533     self._function = fn_factory()
+   4534     # There is no graph to add in eager mode.
+   4535     add_to_graph &amp;= not context.executing_eagerly()
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py in get_concrete_function(self, *args, **kwargs)
+   3242          or `tf.Tensor` or `tf.TensorSpec`.
+   3243     &quot;&quot;&quot;
+-&gt; 3244     graph_function = self._get_concrete_function_garbage_collected(
+   3245         *args, **kwargs)
+   3246     graph_function._garbage_collector.release()  # pylint: disable=protected-access
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py in _get_concrete_function_garbage_collected(self, *args, **kwargs)
+   3208       args, kwargs = None, None
+   3209     with self._lock:
+-&gt; 3210       graph_function, _ = self._maybe_define_function(args, kwargs)
+   3211       seen_names = set()
+   3212       captured = object_identity.ObjectIdentitySet(
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py in _maybe_define_function(self, args, kwargs)
+   3555 
+   3556           self._function_cache.missed.add(call_context_key)
+-&gt; 3557           graph_function = self._create_graph_function(args, kwargs)
+   3558           self._function_cache.primary[cache_key] = graph_function
+   3559 
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py in _create_graph_function(self, args, kwargs, override_flat_arg_shapes)
+   3390     arg_names = base_arg_names + missing_arg_names
+   3391     graph_function = ConcreteFunction(
+-&gt; 3392         func_graph_module.func_graph_from_py_func(
+   3393             self._name,
+   3394             self._python_function,
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\framework\func_graph.py in func_graph_from_py_func(name, python_func, args, kwargs, signature, func_graph, autograph, autograph_options, add_control_dependencies, arg_names, op_return_value, collections, capture_by_value, override_flat_arg_shapes, acd_record_initial_resource_uses)
+   1141         _, original_func = tf_decorator.unwrap(python_func)
+   1142 
+-&gt; 1143       func_outputs = python_func(*func_args, **func_kwargs)
+   1144 
+   1145       # invariant: `func_outputs` contains only Tensors, CompositeTensors,
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py in wrapped_fn(*args)
+   4508           attributes=defun_kwargs)
+   4509       def wrapped_fn(*args):  # pylint: disable=missing-docstring
+-&gt; 4510         ret = wrapper_helper(*args)
+   4511         ret = structure.to_tensor_list(self._output_structure, ret)
+   4512         return [ops.convert_to_tensor(t) for t in ret]
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py in wrapper_helper(*args)
+   4438       if not _should_unpack(nested_args):
+   4439         nested_args = (nested_args,)
+-&gt; 4440       ret = autograph.tf_convert(self._func, ag_ctx)(*nested_args)
+   4441       if _should_pack(ret):
+   4442         ret = tuple(ret)
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py in wrapper(*args, **kwargs)
+    694       try:
+    695         with conversion_ctx:
+--&gt; 696           return converted_call(f, args, kwargs, options=options)
+    697       except Exception as e:  # pylint:disable=broad-except
+    698         if hasattr(e, &#39;ag_error_metadata&#39;):
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py in converted_call(f, args, kwargs, caller_fn_scope, options)
+    381 
+    382   if not options.user_requested and conversion.is_allowlisted(f):
+--&gt; 383     return _call_unconverted(f, args, kwargs, options)
+    384 
+    385   # internal_convert_user_code is for example turned off when issuing a dynamic
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py in _call_unconverted(f, args, kwargs, options, update_cache)
+    462 
+    463   if kwargs is not None:
+--&gt; 464     return f(*args, **kwargs)
+    465   return f(*args)
+    466 
+
+~\AppData\Roaming\Python\Python38\site-packages\keras\utils\traceback_utils.py in error_handler(*args, **kwargs)
+     65     except Exception as e:  # pylint: disable=broad-except
+     66       filtered_tb = _process_traceback_frames(e.__traceback__)
+---&gt; 67       raise e.with_traceback(filtered_tb) from None
+     68     finally:
+     69       del filtered_tb
+
+~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py in wrapper(*args, **kwargs)
+    697       except Exception as e:  # pylint:disable=broad-except
+    698         if hasattr(e, &#39;ag_error_metadata&#39;):
+--&gt; 699           raise e.ag_error_metadata.to_exception(e)
+    700         else:
+    701           raise
+
+TypeError: Exception encountered when calling layer &quot;item_model&quot; (type ItemModel).
+
+in user code:
+
+    File &quot;C:\Users\seanc\AppData\Local\Temp/ipykernel_15160/3669663950.py&quot;, line 30, in call  *
+        self.artist_text_embedding(inputs[&quot;genre&quot;]),], axis=1)
+
+    TypeError: Only integers, slices (`:`), ellipsis (`...`), tf.newaxis (`None`) and scalar tf.int32/tf.int64 tensors are valid indices, got &#39;artistID&#39;
+
+
+Call arguments received:
+  • inputs=tf.Tensor(shape=(None,), dtype=string)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MusicModel</span><span class="p">(</span><span class="n">use_timestamps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cached_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">cached_test</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/3
+WARNING:tensorflow:Layers in a Sequential model should only have a single input tensor, but we receive a &lt;class &#39;dict&#39;&gt; input: {&#39;userID&#39;: &lt;tf.Tensor &#39;IteratorGetNext:5&#39; shape=(None,) dtype=string&gt;, &#39;timestamp&#39;: &lt;tf.Tensor &#39;IteratorGetNext:4&#39; shape=(None,) dtype=int64&gt;, &#39;tag&#39;: &lt;tf.Tensor &#39;IteratorGetNext:3&#39; shape=(None,) dtype=string&gt;}
+Consider rewriting this model with the Functional API.
+WARNING:tensorflow:Layers in a Sequential model should only have a single input tensor, but we receive a &lt;class &#39;dict&#39;&gt; input: {&#39;userID&#39;: &lt;tf.Tensor &#39;IteratorGetNext:5&#39; shape=(None,) dtype=string&gt;, &#39;timestamp&#39;: &lt;tf.Tensor &#39;IteratorGetNext:4&#39; shape=(None,) dtype=int64&gt;, &#39;tag&#39;: &lt;tf.Tensor &#39;IteratorGetNext:3&#39; shape=(None,) dtype=string&gt;}
+Consider rewriting this model with the Functional API.
+13/13 [==============================] - 62s 4s/step - factorized_top_k/top_1_categorical_accuracy: 0.2838 - factorized_top_k/top_5_categorical_accuracy: 0.3035 - factorized_top_k/top_10_categorical_accuracy: 0.3124 - factorized_top_k/top_50_categorical_accuracy: 0.3349 - factorized_top_k/top_100_categorical_accuracy: 0.3480 - loss: 39029.6232 - regularization_loss: 0.0000e+00 - total_loss: 39029.6232
+Epoch 2/3
+13/13 [==============================] - 60s 4s/step - factorized_top_k/top_1_categorical_accuracy: 0.3954 - factorized_top_k/top_5_categorical_accuracy: 0.4175 - factorized_top_k/top_10_categorical_accuracy: 0.4273 - factorized_top_k/top_50_categorical_accuracy: 0.4529 - factorized_top_k/top_100_categorical_accuracy: 0.4650 - loss: 38513.8764 - regularization_loss: 0.0000e+00 - total_loss: 38513.8764
+Epoch 3/3
+13/13 [==============================] - 63s 5s/step - factorized_top_k/top_1_categorical_accuracy: 0.5219 - factorized_top_k/top_5_categorical_accuracy: 0.5371 - factorized_top_k/top_10_categorical_accuracy: 0.5441 - factorized_top_k/top_50_categorical_accuracy: 0.5613 - factorized_top_k/top_100_categorical_accuracy: 0.5698 - loss: 38298.1392 - regularization_loss: 0.0000e+00 - total_loss: 38298.1392
+WARNING:tensorflow:Layers in a Sequential model should only have a single input tensor, but we receive a &lt;class &#39;dict&#39;&gt; input: {&#39;userID&#39;: &lt;tf.Tensor &#39;IteratorGetNext:5&#39; shape=(None,) dtype=string&gt;, &#39;timestamp&#39;: &lt;tf.Tensor &#39;IteratorGetNext:4&#39; shape=(None,) dtype=int64&gt;, &#39;tag&#39;: &lt;tf.Tensor &#39;IteratorGetNext:3&#39; shape=(None,) dtype=string&gt;}
+Consider rewriting this model with the Functional API.
+12/12 [==============================] - 30s 2s/step - factorized_top_k/top_1_categorical_accuracy: 0.4899 - factorized_top_k/top_5_categorical_accuracy: 0.5035 - factorized_top_k/top_10_categorical_accuracy: 0.5103 - factorized_top_k/top_50_categorical_accuracy: 0.5257 - factorized_top_k/top_100_categorical_accuracy: 0.5324 - loss: 19461.5293 - regularization_loss: 0.0000e+00 - total_loss: 19461.5293
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;factorized_top_k/top_1_categorical_accuracy&#39;: 0.4898666739463806,
+ &#39;factorized_top_k/top_5_categorical_accuracy&#39;: 0.5034999847412109,
+ &#39;factorized_top_k/top_10_categorical_accuracy&#39;: 0.5102666616439819,
+ &#39;factorized_top_k/top_50_categorical_accuracy&#39;: 0.5256999731063843,
+ &#39;factorized_top_k/top_100_categorical_accuracy&#39;: 0.5324333310127258,
+ &#39;loss&#39;: 19464.4296875,
+ &#39;regularization_loss&#39;: 0,
+ &#39;total_loss&#39;: 19464.4296875}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="output-analysis">
+<h3>Output Analysis<a class="headerlink" href="#output-analysis" title="Permalink to this headline">¶</a></h3>
+<p>From the above output, it’s clear that timestamps do not improve recommendations for this model. This is likely due to the fact that a substantial amount of the timestamps are of today’s date which is throwing off the model. Perhaps a better data imputation would have been the median date observed in the data.</p>
+<p>Otherwise both models seem to have reasonable performance with a positive item being returned as the top candidate 50% of the time. These models will supply a basis for our next advanced deep retrieval model.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Deep_Learning_Recommender_System.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Deep Neural Network Recommender System</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="bibliography.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Bibliography</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Sean Cummins<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

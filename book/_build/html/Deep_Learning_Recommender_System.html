@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Neural Network Recommender System &#8212; CA4015 Music Recommender System</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Deep Learning Recommender System" href="Advanced_Deep_Learning_Recommender_System.html" />
+    <link rel="prev" title="Collaborative Filtering - Matrix Factorization" href="Matrix_Factorization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">CA4015 Music Recommender System</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preliminary_Data_Analysis.html">
+   Preliminary Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Matrix_Factorization.html">
+   Collaborative Filtering - Matrix Factorization
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Deep Neural Network Recommender System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Advanced_Deep_Learning_Recommender_System.html">
+   Advanced Deep Learning Recommender System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Deep_Learning_Recommender_System.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDeep_Learning_Recommender_System.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Deep_Learning_Recommender_System.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing">
+   Data Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalising-the-weight-column">
+   Normalising the ‘weight’ Column
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-dataset">
+   Create DataSet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-retrieval-model">
+   Simple Retrieval Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-evaluate-model">
+   Train and Evaluate Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-retrieval-model-analysis">
+   Simple Retrieval Model Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking-model">
+   Ranking Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking-model-performance-analysis">
+   Ranking Model Performance Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qualitative-performance-analysis">
+   Qualitative Performance Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-analysis">
+     Output Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="deep-neural-network-recommender-system">
+<h1>Deep Neural Network Recommender System<a class="headerlink" href="#deep-neural-network-recommender-system" title="Permalink to this headline">¶</a></h1>
+<p>In this Notebook, we will build another music recommendation system. This time, we will incorporate a deep learning approach as explained in the introduction. We will be using Keras on Tensorflow V2 for this model. Keras is a high-level API built on-top of Tensorflow. It offers a range of utilities for getting started with recommender systems which we will use throughout this Notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Text</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow_recommenders</span> <span class="k">as</span> <span class="nn">tfrs</span>
+<span class="kn">import</span> <span class="nn">tensorflow_datasets</span> <span class="k">as</span> <span class="nn">tfds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Here we just repeat some data preprocessing steps as previous. However, we will incorporate a new way to normalise our weight values. In the previous notebook, the normalised weight values lead to poor performance of the model. Because of this, we opted to use a binary model. However, in this notebook we will normalise the weight column on a per user basis. This will be discussed shortly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s define our amount of users</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/user_artists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">num_users</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1">#Extract userID column</span>
+<span class="n">userids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="p">)</span>
+
+<span class="c1">#Remap the column</span>
+<span class="n">u_mapper</span><span class="p">,</span> <span class="n">u_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">userids</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s define our amount of artists</span>
+<span class="n">artists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/artists.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">artists</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;artistID&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">num_artists</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">artists</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1">#Extract artistID column</span>
+<span class="n">artistids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="p">)</span>
+
+<span class="c1">#Remap the column</span>
+<span class="n">a_mapper</span><span class="p">,</span> <span class="n">a_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">artistids</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s replace old columns with new ind ones</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="n">u_ind</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span> <span class="o">=</span> <span class="n">a_ind</span>
+
+<span class="c1">#Let&#39;s ensure the max value is approriate</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1891</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">17631</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We convert the ID&#39;s to string so we can use the StringLookup function later</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">artistID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="normalising-the-weight-column">
+<h2>Normalising the ‘weight’ Column<a class="headerlink" href="#normalising-the-weight-column" title="Permalink to this headline">¶</a></h2>
+<p>Rather than normalising the entire weight column as one array, we can normalise the values for each user individually. Simply put, the artist that a particular user listens to the most will have a high value such as 1. The artist they listen to the least will be closer to 0.</p>
+<p>This is a better representation of a user’s preferences than normalising the entire weight column, which can lead to very insignificant values. Normalising the entire weight column will lead to user-artist pairs having small values for weight solely because other users have listened to more music in general.</p>
+<p>In the following function, we create a new rating matrix which is populated by each users ratings one at a time. Once this is complete, we replace our old <code class="docutils literal notranslate"><span class="pre">rating_matrix</span></code> variable with <code class="docutils literal notranslate"><span class="pre">new_rating_matrix</span></code> to keep continuity of naming conventions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s normalise our weight column</span>
+<span class="n">new_rating_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="s1">&#39;artistID&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">user_ratings</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[</span><span class="n">rating_matrix</span><span class="o">.</span><span class="n">userID</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">]</span>
+    <span class="n">ratings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">])</span>
+    <span class="n">user_ratings</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">ratings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_rating_matrix</span> <span class="o">=</span> <span class="n">new_rating_matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">)</span>
+<span class="n">rating_matrix</span> <span class="o">=</span> <span class="n">new_rating_matrix</span>
+<span class="n">rating_matrix</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\seanc\AppData\Local\Temp/ipykernel_20180/4251931852.py:6: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  user_ratings[&#39;weight&#39;] = tf.keras.utils.normalize(ratings, axis=-1, order=2)[0]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>92834.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.091235</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.109804</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000008</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.030397</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.062543</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.109109</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="create-dataset">
+<h2>Create DataSet<a class="headerlink" href="#create-dataset" title="Permalink to this headline">¶</a></h2>
+<p>In the following cells, we will be creating a tensor DataSet using the <code class="docutils literal notranslate"><span class="pre">from_tensor_slices()</span></code> function. We must firstly create our <code class="docutils literal notranslate"><span class="pre">interactions_dict</span></code>, which is just our rating_matrix in dictionary form.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## we tansform the table inta a dictionary , which then we feed into tensor slices</span>
+<span class="c1"># this step is crucial as this will be the type of data fed into the embedding layers</span>
+<span class="n">interactions_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">rating_matrix</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">interactions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">interactions_dict</span><span class="p">)</span>
+
+<span class="c1">## we do similar step for item, where this is the reference table for items to be recommended</span>
+<span class="n">items_dict</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[[</span><span class="s1">&#39;artistID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">items_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">items_dict</span><span class="p">)</span>
+
+<span class="c1">## map the features in interactions and items to an identifier that we will use throught the embedding layers</span>
+<span class="c1">## do it for all the items in interaction and item table</span>
+<span class="c1">## you may often get itemtype error, so that is why here i am casting the quantity type as float to ensure consistency</span>
+<span class="n">interactions</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;userID&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">],</span> 
+                                            <span class="s1">&#39;artistID&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;artistID&#39;</span><span class="p">],</span> 
+                                            <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]})</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;artistID&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We must also create variables representing our unique user ID’s and artist ID’s.</p>
+<p>This will allow us to map the raw values of our categorical features to embeddings vectors in our models. For this, we need a vocabulary mapping raw feature values to an integfer in a contiguous range. This allows us to look up the corresponding embeddings in our tables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get unique item and user id&#39;s as a lookup table</span>
+<span class="n">unique_artist_ids</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">a_ind</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">unique_user_ids</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">u_ind</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Randomly shuffle data and split between train and test.</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">shuffled</span> <span class="o">=</span> <span class="n">interactions</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">reshuffle_each_iteration</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">62_000</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">62_000</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">30_000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;our test set is: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;our train set is: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>our test set is: 62000
+our train set is: 30000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simple-retrieval-model">
+<h2>Simple Retrieval Model<a class="headerlink" href="#simple-retrieval-model" title="Permalink to this headline">¶</a></h2>
+<p>In the following cells, we define a simple retrieval model. Although defined differently, this model works on the same principals as our previous matrix factorisation model. We just include this step as a progression towards a more advanced deep learning model.</p>
+<p>The TFRS package with Keras makes development of recommender systems simple and intuitive. We simply inherit from the base <code class="docutils literal notranslate"><span class="pre">tfrs.Model</span></code> class, define our query (user) and item (artist) towers or embeddings, then define our loss function and metrics to be used and our model is ready to deploy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Basic retrieval model</span>
+<span class="k">class</span> <span class="nc">MusicModel</span><span class="p">(</span><span class="n">tfrs</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_model</span><span class="p">,</span> <span class="n">item_model</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1">### we pass the embedding layer into item model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">item_model</span>
+            
+        <span class="c1">### We pass the embedding layer into user model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">user_model</span>
+        
+        <span class="c1">### for retrieval model. we take top-k accuracy as metrics</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="n">tfrs</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">FactorizedTopK</span><span class="p">(</span><span class="n">candidates</span><span class="o">=</span><span class="n">items</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">item_model</span><span class="p">))</span>
+        
+        <span class="c1"># define the task, which is retrieval                                        </span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">tfrs</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Retrieval</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span> <span class="o">=</span> <span class="n">task</span>
+
+    <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="c1"># We pick out the user features and pass them into the user model.</span>
+        <span class="n">user_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">])</span>
+        <span class="c1"># And pick out the item features and pass them into the item model,</span>
+        <span class="c1"># getting embeddings back.</span>
+        <span class="n">positive_item_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_model</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;artistID&quot;</span><span class="p">])</span>
+
+        <span class="c1"># The task computes the loss and the metrics.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">user_embeddings</span><span class="p">,</span> <span class="n">positive_item_embeddings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-and-evaluate-model">
+<h2>Train and Evaluate Model<a class="headerlink" href="#train-and-evaluate-model" title="Permalink to this headline">¶</a></h2>
+<p>The following cell is used to train and evaluate our model. We firstly define the size of our embedding dimensions. Then, we build our user and item embedding vectors using <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Embedding</span></code>. In this function, we add an additional embedding layer to account for unknown tokens (if any).</p>
+<p>We simply instantiate our model and compile it with an optimisation function of our choice. We will use Adagrad in this instance. We then fit the model on our training data and provide our number of epochs. Following from this, we fit the data on our test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Fitting and evaluating</span>
+<span class="c1">### we choose the dimensionality of the query and candicate representation.</span>
+<span class="n">embedding_dimension</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="c1">## we pass the model, which is the same model we created in the query and candidate tower, into the model</span>
+<span class="n">user_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_user_ids</span><span class="p">,</span> <span class="n">mask_token</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                <span class="c1"># We add an additional embedding to account for unknown tokens.</span>
+                                <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_user_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">)])</span>
+
+<span class="n">item_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_artist_ids</span><span class="p">,</span> <span class="n">mask_token</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_artist_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">)])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MusicModel</span><span class="p">(</span><span class="n">user_model</span><span class="p">,</span> <span class="n">item_model</span><span class="p">)</span>
+
+<span class="c1"># a smaller learning rate may make the model move slower and prone to overfitting, so we stick to 0.1</span>
+<span class="c1"># other optimizers, such as SGD and Adam, are listed here https://www.tensorflow.org/api_docs/python/tf/keras/optimizers</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">cached_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">100_000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">cached_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+
+<span class="c1">## fit the model with ten epochs</span>
+<span class="n">model_hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cached_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1">#evaluate the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">cached_test</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># num_validation_runs = len(one_layer_history.history[&quot;val_factorized_top_k/top_100_categorical_accuracy&quot;])</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">model_hist</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;factorized_top_k/top_100_categorical_accuracy&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Accuracy vs epoch&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Top-100 accuracy&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/7 [===&gt;..........................] - ETA: 1:30 - factorized_top_k/top_1_categorical_accuracy: 0.0000e+00 - factorized_top_k/top_5_categorical_accuracy: 2.0000e-04 - factorized_top_k/top_10_categorical_accuracy: 3.0000e-04 - factorized_top_k/top_50_categorical_accuracy: 0.0028 - factorized_top_k/top_100_categorical_accuracy: 0.0059 - loss: 92103.7656 - regularization_loss: 0.0000e+00 - total_loss: 92103.7656
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+2/7 [=======&gt;......................] - ETA: 54s - factorized_top_k/top_1_categorical_accuracy: 5.5000e-04 - factorized_top_k/top_5_categorical_accuracy: 0.0022 - factorized_top_k/top_10_categorical_accuracy: 0.0036 - factorized_top_k/top_50_categorical_accuracy: 0.0085 - factorized_top_k/top_100_categorical_accuracy: 0.0136 - loss: 92104.2266 - regularization_loss: 0.0000e+00 - total_loss: 92104.2266         
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simple-retrieval-model-analysis">
+<h2>Simple Retrieval Model Analysis<a class="headerlink" href="#simple-retrieval-model-analysis" title="Permalink to this headline">¶</a></h2>
+<p>The above model trains for 10 epoch and is then evaluated on testing data. In the training epoch information, we see information such as <code class="docutils literal notranslate"><span class="pre">top_5_categorical_accuracy</span></code>. This is indicative of the models ability to return a true-positive in the top-5 retrieved items (artists) from the entire set. We see that for each epoch, the model generally gets better at returning true-positives.</p>
+<p>In the evaluation information, we see these accuracies drop significantly. This signifies that are model is overfitting to our training data. We can introduce regularisation terms as previous to mitigate this effect. Also, in deep learning models, we may introduce more user and artist features that help the model generalise better.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a model that takes in raw query features, and</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">tfrs</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">factorized_top_k</span><span class="o">.</span><span class="n">BruteForce</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">user_model</span><span class="p">)</span>
+<span class="c1"># recommends item out of the entire items dataset.</span>
+<span class="n">index</span><span class="o">.</span><span class="n">index_from_dataset</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">item_model</span><span class="p">)))</span>
+
+<span class="c1"># Get recommendations.</span>
+<span class="n">j</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">titles</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="n">j</span><span class="p">]))</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">titles</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">artist_id</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">artists</span><span class="p">[</span><span class="n">artists</span><span class="p">[</span><span class="s1">&#39;artistID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist_id</span><span class="p">)][</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recommendations for user %s: </span><span class="si">{</span><span class="n">names</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Recommendations for user 10: [[&#39;Savage Garden&#39;]
+ [&#39;Ke$ha&#39;]
+ [&#39;Library Tapes&#39;]
+ [&#39;nevershoutnever!&#39;]
+ [&#39;Poney Express&#39;]
+ [&#39;Ra Ra Riot&#39;]
+ [&#39;The Rakes&#39;]
+ [&#39;Astrud Gilberto&#39;]
+ [&#39;Bon Iver&#39;]
+ [&#39;Metro Station&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ranking-model">
+<h2>Ranking Model<a class="headerlink" href="#ranking-model" title="Permalink to this headline">¶</a></h2>
+<p>In the following cells, we will upgrade from our previous model by using a ranking model. In this model, we will be making use of <code class="docutils literal notranslate"><span class="pre">dense</span></code> keras layers with ‘RELU’ activation functions. This is a deep learning approach. We will also be attempting to make use of the explicit rating values in the <code class="docutils literal notranslate"><span class="pre">weight</span></code> column of our rating matrix.</p>
+<p>Moderm recommender systems usually operate in two stages:</p>
+<ul class="simple">
+<li><p>Retrieval</p></li>
+<li><p>Ranking</p></li>
+</ul>
+<p>We will firstly define our <code class="docutils literal notranslate"><span class="pre">RankingModel</span></code> class which will act as our ranking model. Our <code class="docutils literal notranslate"><span class="pre">MusicModel</span></code> will act as the retrieval model as previous.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define our ranking model</span>
+<span class="k">class</span> <span class="nc">RankingModel</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">embedding_dimension</span> <span class="o">=</span> <span class="mi">32</span>
+
+        <span class="c1">### we pass the embedding layer into item model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">item_model</span>
+            
+        <span class="c1">### We pass the embedding layer into user model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">user_model</span>
+
+        <span class="c1"># Compute predictions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                      <span class="c1"># Learn multiple dense layers.</span>
+                      <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+                      <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+                      <span class="c1"># Make rating predictions in the final layer.</span>
+                      <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">user_id</span><span class="p">,</span> <span class="n">item_title</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">user_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">item_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_model</span><span class="p">(</span><span class="n">item_title</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratings</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">user_embedding</span><span class="p">,</span> <span class="n">item_embedding</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Now our base retrieval model incorporates our ranking model</span>
+<span class="k">class</span> <span class="nc">MusicModel</span><span class="p">(</span><span class="n">tfrs</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ranking_model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">RankingModel</span><span class="p">()</span>
+            
+        <span class="c1">#Let&#39;s define our Loss function and optimisation function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span> <span class="o">=</span> <span class="n">tfrs</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Ranking</span><span class="p">(</span>
+                          <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">(),</span>
+                          <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">RootMeanSquaredError</span><span class="p">()])</span>
+    
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranking_model</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">],</span> <span class="n">features</span><span class="p">[</span><span class="s2">&quot;artistID&quot;</span><span class="p">]))</span>
+
+    <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="n">rating_predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranking_model</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;userID&quot;</span><span class="p">],</span> <span class="n">features</span><span class="p">[</span><span class="s2">&quot;artistID&quot;</span><span class="p">]))</span>
+
+        <span class="c1"># The task computes the loss and the metrics.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">],</span> <span class="n">predictions</span><span class="o">=</span><span class="n">rating_predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong>: This model differs to our previous retrieval model as we are now incorporating the weight column, whereas our previous model worked solely on binary values. This Deep Learning Framework is more robust and can handle the disparity between values in our weight column. We normalised our weight column values earlier. This is an important preprocessing step to achieve good model performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Fitting and evaluating</span>
+<span class="c1">### we choose the dimensionality of the query and candicate representation.</span>
+<span class="n">embedding_dimension</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="c1">## we pass the model, which is the same model we created in the query and candidate tower, into the model</span>
+<span class="n">user_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_user_ids</span><span class="p">,</span> <span class="n">mask_token</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                <span class="c1"># We add an additional embedding to account for unknown tokens.</span>
+                                <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_user_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">)])</span>
+
+<span class="n">item_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span>
+                                <span class="n">vocabulary</span><span class="o">=</span><span class="n">unique_artist_ids</span><span class="p">,</span> <span class="n">mask_token</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_artist_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">)])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MusicModel</span><span class="p">()</span>
+
+<span class="c1"># a smaller learning rate may make the model move slower and prone to overfitting, so we stick to 0.1</span>
+<span class="c1"># other optimizers, such as SGD and Adam, are listed here https://www.tensorflow.org/api_docs/python/tf/keras/optimizers</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">cached_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">100_000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">cached_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+
+<span class="c1">## fit the model with ten epochs</span>
+<span class="n">model_hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cached_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1">#evaluate the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">cached_test</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+7/7 [==============================] - 2s 78ms/step - root_mean_squared_error: 0.1133 - loss: 0.0129 - regularization_loss: 0.0000e+00 - total_loss: 0.0129
+Epoch 2/10
+7/7 [==============================] - 0s 48ms/step - root_mean_squared_error: 0.1097 - loss: 0.0123 - regularization_loss: 0.0000e+00 - total_loss: 0.0123
+Epoch 3/10
+7/7 [==============================] - 0s 48ms/step - root_mean_squared_error: 0.1096 - loss: 0.0123 - regularization_loss: 0.0000e+00 - total_loss: 0.0123
+Epoch 4/10
+7/7 [==============================] - 0s 44ms/step - root_mean_squared_error: 0.1095 - loss: 0.0123 - regularization_loss: 0.0000e+00 - total_loss: 0.0123
+Epoch 5/10
+7/7 [==============================] - 0s 48ms/step - root_mean_squared_error: 0.1095 - loss: 0.0123 - regularization_loss: 0.0000e+00 - total_loss: 0.0123
+Epoch 6/10
+7/7 [==============================] - 0s 50ms/step - root_mean_squared_error: 0.1094 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+Epoch 7/10
+7/7 [==============================] - 0s 49ms/step - root_mean_squared_error: 0.1094 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+Epoch 8/10
+7/7 [==============================] - 0s 45ms/step - root_mean_squared_error: 0.1093 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+Epoch 9/10
+7/7 [==============================] - 0s 45ms/step - root_mean_squared_error: 0.1093 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+Epoch 10/10
+7/7 [==============================] - 0s 48ms/step - root_mean_squared_error: 0.1093 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+3/3 [==============================] - 1s 70ms/step - root_mean_squared_error: 0.1113 - loss: 0.0122 - regularization_loss: 0.0000e+00 - total_loss: 0.0122
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;root_mean_squared_error&#39;: 0.11132322996854782,
+ &#39;loss&#39;: 0.011565779335796833,
+ &#39;regularization_loss&#39;: 0,
+ &#39;total_loss&#39;: 0.011565779335796833}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ranking-model-performance-analysis">
+<h2>Ranking Model Performance Analysis<a class="headerlink" href="#ranking-model-performance-analysis" title="Permalink to this headline">¶</a></h2>
+<p>We allowed our model to train for a total of 10 epochs before being evaluated on unseen testing data. Using RMSE as our objective function, we see this model is able to achieve great performance. The performance of our model does not drop significantly for unseen data.</p>
+<p>Using RMSE as our metric allows us to quantitately compare the performance of this model with our previous matrix factorisation approach. In matrix factorisation, we achieved:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'train_error':</span> <span class="pre">0.15067895,</span> <span class="pre">'test_error':</span> <span class="pre">0.23825963</span></code> for our unregularised model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'train_error':</span> <span class="pre">0.29663688,</span> <span class="pre">'test_error':</span> <span class="pre">0.32661134</span></code> for our regularised model.</p></li>
+</ul>
+<p>We noted that the increase in error for our regularised model leads to better generalisations. In this deep learning model, we achieved:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'train_error':</span> <span class="pre">0.1093,</span> <span class="pre">'test_error':</span> <span class="pre">0.1113</span></code>.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="qualitative-performance-analysis">
+<h2>Qualitative Performance Analysis<a class="headerlink" href="#qualitative-performance-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Although the quantitative analysis of this model seems good, we do not know whether this leads to good recommendations or not. Let’s perform a qualitative analysis of the model. We’ll do the following:</p>
+<ul class="simple">
+<li><p>Take a typical user with a reasonable amount of artists they listen to</p></li>
+<li><p>Sample 5 random artists they listen to</p></li>
+<li><p>Along with the user id, provide the artist id’s selected to our model</p></li>
+<li><p>We expect our model to return a ranking of these artist ID’s in the order that the user is most interested in them.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#User 100</span>
+<span class="n">user_0</span> <span class="o">=</span> <span class="n">rating_matrix</span><span class="p">[</span><span class="n">rating_matrix</span><span class="p">[</span><span class="s1">&#39;userID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;100&quot;</span><span class="p">]</span>
+
+<span class="c1">#Sample 5 artists they listen to</span>
+<span class="n">user_0_sample</span> <span class="o">=</span> <span class="n">user_0</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">74</span><span class="p">)</span>
+<span class="n">user_0_sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userID</th>
+      <th>artistID</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4986</th>
+      <td>100</td>
+      <td>2649</td>
+      <td>0.205387</td>
+    </tr>
+    <tr>
+      <th>4980</th>
+      <td>100</td>
+      <td>2146</td>
+      <td>0.164745</td>
+    </tr>
+    <tr>
+      <th>4990</th>
+      <td>100</td>
+      <td>2653</td>
+      <td>0.150230</td>
+    </tr>
+    <tr>
+      <th>4972</th>
+      <td>100</td>
+      <td>769</td>
+      <td>0.137167</td>
+    </tr>
+    <tr>
+      <th>4996</th>
+      <td>100</td>
+      <td>2659</td>
+      <td>0.083461</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The following cell takes in artist ID’s and a userID and computes a score for their combination. The model returns the artists in order of the scores they achieve. We expect this order to be similar to the order shown in the above sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_ratings</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">test_artist_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;2649&quot;</span><span class="p">,</span> <span class="s2">&quot;2146&quot;</span><span class="p">,</span> <span class="s2">&quot;2653&quot;</span><span class="p">,</span> <span class="s2">&quot;769&quot;</span><span class="p">,</span> <span class="s2">&quot;2659&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">artistid</span> <span class="ow">in</span> <span class="n">test_artist_ids</span><span class="p">:</span>
+    <span class="n">test_ratings</span><span class="p">[</span><span class="n">artistid</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">({</span>
+        <span class="s2">&quot;userID&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;100&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;artistID&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">artistid</span><span class="p">])</span>
+    <span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ratings:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">artist</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">test_ratings</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">artist</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ratings:
+2649: [[0.09791555]]
+2653: [[0.09428623]]
+2146: [[0.0825875]]
+769: [[0.08212695]]
+2659: [[0.07627478]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="output-analysis">
+<h3>Output Analysis<a class="headerlink" href="#output-analysis" title="Permalink to this headline">¶</a></h3>
+<p>We can see in the above cell that from the 5 sampled artists, our recommender system correctly identified the most liked artist as “2649”. The system did rank “2653” in second place, when in reality that artist is the user’s third favourite artist. However, the true ratings of the second and third most liked artist for this particular user differ only marginally.</p>
+<p>From this small example, we can see that our model performs quite well.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook, we were able to create a two-part recommender system using Tensorflow V2. Modern recommender systems commonly adopt a two-step approach to making recommendations. The first step involves retrieving items that a particular query (user) will enjoy. The second step involves ranking this items and returning the ranked list to the user.</p>
+<p>There exists plenty room to expand our model from here. TensorFlow offers a vast amount of API’s for further expansion of recommender systems. In the grand scheme of things, this system is still considered quite trivial despite making strong recommendations. In our next notebook, we will attempt to incorporate some extra features into our recommendation system, such as genre tags as well as timestamps for when these genres were applied.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Matrix_Factorization.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Collaborative Filtering - Matrix Factorization</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Advanced_Deep_Learning_Recommender_System.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Advanced Deep Learning Recommender System</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Sean Cummins<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

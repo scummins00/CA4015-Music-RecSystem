@@ -42,3 +42,17 @@ The two standard approaches to minimizing error in CF are *Alternating Least Squ
 
 
 ## Deep Neural Networks
+Advances in deep learning-based recommender systems have gained notable traction over the past years. This goes hand-in-hand with the increased adoption of deep learning frameworks in most ML applications. Deep learning can effectively capture nonlinear and nontrivial user-item relationships through complex data abstraction {cite}`Zhang_Yao_Sun_Tay_2019`. 
+
+To develop our own deep neural network recommender, we will employ Tensorflow V2, with an emphasis on the [*Tensorflow Recommedation Systems*](https://www.tensorflow.org/recommenders/api_docs/python/tfrs) (TFRS) package. Tensorflow is developed by Google, the leading experts in recommendation systems. The TFRS package can be used through Keras which is an API built atop Tensorflow. TFRS provides a large volume functions designed spcifically for working with recommender systems.
+
+Google have also authored many publications regarding their philosophy regarding recommender systems for their various applications {cite}`Covington_Adams_Sargin_2016,Cheng_Koc2016`. They regularly follow a repeating pattern of developing two seperate 'Towers', a user (query) tower, and an item (candidate) tower. Each of these towers can have varying levels of complexity, and can host deep learning embedings. A combined model of the outputs of these seperate towers is then designed as a feed-forward deep network.
+
+Google also regularly advice a two-tier approach to recommender systems. That is: a retrieval model, and a ranking model. Their typical architeture is displayed in the image below, which has been abstracted from {cite}`Cheng_Koc2016`
+
+```{image} images/google_architecture.png
+:alt: google_achitecture
+:class: bg-primary mb-1
+:width: 40%
+:align: center
+```

@@ -1,0 +1,170 @@
+Traceback (most recent call last):
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "c:\program files\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "C:\Users\seanc\AppData\Roaming\Python\Python38\site-packages\nbclient\client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+model = MusicModel(use_timestamps=False)
+model.compile(optimizer=tf.keras.optimizers.Adagrad(0.1))
+model.fit(cached_train, epochs=3)
+model.evaluate(cached_test, return_dict=True)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mTypeError[0m                                 Traceback (most recent call last)
+[1;32m~\AppData\Local\Temp/ipykernel_15160/2711739428.py[0m in [0;36m<module>[1;34m[0m
+[1;32m----> 1[1;33m [0mmodel[0m [1;33m=[0m [0mMusicModel[0m[1;33m([0m[0muse_timestamps[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m      2[0m [0mmodel[0m[1;33m.[0m[0mcompile[0m[1;33m([0m[0moptimizer[0m[1;33m=[0m[0mtf[0m[1;33m.[0m[0mkeras[0m[1;33m.[0m[0moptimizers[0m[1;33m.[0m[0mAdagrad[0m[1;33m([0m[1;36m0.1[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m      3[0m [0mmodel[0m[1;33m.[0m[0mfit[0m[1;33m([0m[0mcached_train[0m[1;33m,[0m [0mepochs[0m[1;33m=[0m[1;36m3[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m      4[0m [0mmodel[0m[1;33m.[0m[0mevaluate[0m[1;33m([0m[0mcached_test[0m[1;33m,[0m [0mreturn_dict[0m[1;33m=[0m[1;32mTrue[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Local\Temp/ipykernel_15160/2758195486.py[0m in [0;36m__init__[1;34m(self, use_timestamps)[0m
+[0;32m     16[0m         self.task = tfrs.tasks.Retrieval(
+[0;32m     17[0m                     metrics=tfrs.metrics.FactorizedTopK(
+[1;32m---> 18[1;33m                         candidates=items.batch(128).map(self.candidate_model),),)
+[0m[0;32m     19[0m [1;33m[0m[0m
+[0;32m     20[0m     [1;32mdef[0m [0mcompute_loss[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mfeatures[0m[1;33m,[0m [0mtraining[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py[0m in [0;36mmap[1;34m(self, map_func, num_parallel_calls, deterministic, name)[0m
+[0;32m   2002[0m         warnings.warn("The `deterministic` argument has no effect unless the "
+[0;32m   2003[0m                       "`num_parallel_calls` argument is specified.")
+[1;32m-> 2004[1;33m       [1;32mreturn[0m [0mMapDataset[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mmap_func[0m[1;33m,[0m [0mpreserve_cardinality[0m[1;33m=[0m[1;32mTrue[0m[1;33m,[0m [0mname[0m[1;33m=[0m[0mname[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   2005[0m     [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   2006[0m       return ParallelMapDataset(
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py[0m in [0;36m__init__[1;34m(self, input_dataset, map_func, use_inter_op_parallelism, preserve_cardinality, use_legacy_function, name)[0m
+[0;32m   5453[0m     [0mself[0m[1;33m.[0m[0m_use_inter_op_parallelism[0m [1;33m=[0m [0muse_inter_op_parallelism[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   5454[0m     [0mself[0m[1;33m.[0m[0m_preserve_cardinality[0m [1;33m=[0m [0mpreserve_cardinality[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 5455[1;33m     self._map_func = StructuredFunctionWrapper(
+[0m[0;32m   5456[0m         [0mmap_func[0m[1;33m,[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   5457[0m         [0mself[0m[1;33m.[0m[0m_transformation_name[0m[1;33m([0m[1;33m)[0m[1;33m,[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py[0m in [0;36m__init__[1;34m(self, func, transformation_name, dataset, input_classes, input_shapes, input_types, input_structure, add_to_graph, use_legacy_function, defun_kwargs)[0m
+[0;32m   4531[0m         [0mfn_factory[0m [1;33m=[0m [0mtrace_tf_function[0m[1;33m([0m[0mdefun_kwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   4532[0m [1;33m[0m[0m
+[1;32m-> 4533[1;33m     [0mself[0m[1;33m.[0m[0m_function[0m [1;33m=[0m [0mfn_factory[0m[1;33m([0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   4534[0m     [1;31m# There is no graph to add in eager mode.[0m[1;33m[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   4535[0m     [0madd_to_graph[0m [1;33m&=[0m [1;32mnot[0m [0mcontext[0m[1;33m.[0m[0mexecuting_eagerly[0m[1;33m([0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py[0m in [0;36mget_concrete_function[1;34m(self, *args, **kwargs)[0m
+[0;32m   3242[0m          [1;32mor[0m[0;31m [0m[0;31m`[0m[0mtf[0m[1;33m.[0m[0mTensor[0m[0;31m`[0m [1;32mor[0m[0;31m [0m[0;31m`[0m[0mtf[0m[1;33m.[0m[0mTensorSpec[0m[0;31m`[0m[1;33m.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3243[0m     """
+[1;32m-> 3244[1;33m     graph_function = self._get_concrete_function_garbage_collected(
+[0m[0;32m   3245[0m         *args, **kwargs)
+[0;32m   3246[0m     [0mgraph_function[0m[1;33m.[0m[0m_garbage_collector[0m[1;33m.[0m[0mrelease[0m[1;33m([0m[1;33m)[0m  [1;31m# pylint: disable=protected-access[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py[0m in [0;36m_get_concrete_function_garbage_collected[1;34m(self, *args, **kwargs)[0m
+[0;32m   3208[0m       [0margs[0m[1;33m,[0m [0mkwargs[0m [1;33m=[0m [1;32mNone[0m[1;33m,[0m [1;32mNone[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3209[0m     [1;32mwith[0m [0mself[0m[1;33m.[0m[0m_lock[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3210[1;33m       [0mgraph_function[0m[1;33m,[0m [0m_[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_maybe_define_function[0m[1;33m([0m[0margs[0m[1;33m,[0m [0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3211[0m       [0mseen_names[0m [1;33m=[0m [0mset[0m[1;33m([0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3212[0m       captured = object_identity.ObjectIdentitySet(
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py[0m in [0;36m_maybe_define_function[1;34m(self, args, kwargs)[0m
+[0;32m   3555[0m [1;33m[0m[0m
+[0;32m   3556[0m           [0mself[0m[1;33m.[0m[0m_function_cache[0m[1;33m.[0m[0mmissed[0m[1;33m.[0m[0madd[0m[1;33m([0m[0mcall_context_key[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3557[1;33m           [0mgraph_function[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_create_graph_function[0m[1;33m([0m[0margs[0m[1;33m,[0m [0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3558[0m           [0mself[0m[1;33m.[0m[0m_function_cache[0m[1;33m.[0m[0mprimary[0m[1;33m[[0m[0mcache_key[0m[1;33m][0m [1;33m=[0m [0mgraph_function[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3559[0m [1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\eager\function.py[0m in [0;36m_create_graph_function[1;34m(self, args, kwargs, override_flat_arg_shapes)[0m
+[0;32m   3390[0m     [0marg_names[0m [1;33m=[0m [0mbase_arg_names[0m [1;33m+[0m [0mmissing_arg_names[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3391[0m     graph_function = ConcreteFunction(
+[1;32m-> 3392[1;33m         func_graph_module.func_graph_from_py_func(
+[0m[0;32m   3393[0m             [0mself[0m[1;33m.[0m[0m_name[0m[1;33m,[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3394[0m             [0mself[0m[1;33m.[0m[0m_python_function[0m[1;33m,[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\framework\func_graph.py[0m in [0;36mfunc_graph_from_py_func[1;34m(name, python_func, args, kwargs, signature, func_graph, autograph, autograph_options, add_control_dependencies, arg_names, op_return_value, collections, capture_by_value, override_flat_arg_shapes, acd_record_initial_resource_uses)[0m
+[0;32m   1141[0m         [0m_[0m[1;33m,[0m [0moriginal_func[0m [1;33m=[0m [0mtf_decorator[0m[1;33m.[0m[0munwrap[0m[1;33m([0m[0mpython_func[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1142[0m [1;33m[0m[0m
+[1;32m-> 1143[1;33m       [0mfunc_outputs[0m [1;33m=[0m [0mpython_func[0m[1;33m([0m[1;33m*[0m[0mfunc_args[0m[1;33m,[0m [1;33m**[0m[0mfunc_kwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   1144[0m [1;33m[0m[0m
+[0;32m   1145[0m       [1;31m# invariant: `func_outputs` contains only Tensors, CompositeTensors,[0m[1;33m[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py[0m in [0;36mwrapped_fn[1;34m(*args)[0m
+[0;32m   4508[0m           attributes=defun_kwargs)
+[0;32m   4509[0m       [1;32mdef[0m [0mwrapped_fn[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m)[0m[1;33m:[0m  [1;31m# pylint: disable=missing-docstring[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 4510[1;33m         [0mret[0m [1;33m=[0m [0mwrapper_helper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   4511[0m         [0mret[0m [1;33m=[0m [0mstructure[0m[1;33m.[0m[0mto_tensor_list[0m[1;33m([0m[0mself[0m[1;33m.[0m[0m_output_structure[0m[1;33m,[0m [0mret[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   4512[0m         [1;32mreturn[0m [1;33m[[0m[0mops[0m[1;33m.[0m[0mconvert_to_tensor[0m[1;33m([0m[0mt[0m[1;33m)[0m [1;32mfor[0m [0mt[0m [1;32min[0m [0mret[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\data\ops\dataset_ops.py[0m in [0;36mwrapper_helper[1;34m(*args)[0m
+[0;32m   4438[0m       [1;32mif[0m [1;32mnot[0m [0m_should_unpack[0m[1;33m([0m[0mnested_args[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   4439[0m         [0mnested_args[0m [1;33m=[0m [1;33m([0m[0mnested_args[0m[1;33m,[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 4440[1;33m       [0mret[0m [1;33m=[0m [0mautograph[0m[1;33m.[0m[0mtf_convert[0m[1;33m([0m[0mself[0m[1;33m.[0m[0m_func[0m[1;33m,[0m [0mag_ctx[0m[1;33m)[0m[1;33m([0m[1;33m*[0m[0mnested_args[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   4441[0m       [1;32mif[0m [0m_should_pack[0m[1;33m([0m[0mret[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   4442[0m         [0mret[0m [1;33m=[0m [0mtuple[0m[1;33m([0m[0mret[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m    694[0m       [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    695[0m         [1;32mwith[0m [0mconversion_ctx[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 696[1;33m           [1;32mreturn[0m [0mconverted_call[0m[1;33m([0m[0mf[0m[1;33m,[0m [0margs[0m[1;33m,[0m [0mkwargs[0m[1;33m,[0m [0moptions[0m[1;33m=[0m[0moptions[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    697[0m       [1;32mexcept[0m [0mException[0m [1;32mas[0m [0me[0m[1;33m:[0m  [1;31m# pylint:disable=broad-except[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    698[0m         [1;32mif[0m [0mhasattr[0m[1;33m([0m[0me[0m[1;33m,[0m [1;34m'ag_error_metadata'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py[0m in [0;36mconverted_call[1;34m(f, args, kwargs, caller_fn_scope, options)[0m
+[0;32m    381[0m [1;33m[0m[0m
+[0;32m    382[0m   [1;32mif[0m [1;32mnot[0m [0moptions[0m[1;33m.[0m[0muser_requested[0m [1;32mand[0m [0mconversion[0m[1;33m.[0m[0mis_allowlisted[0m[1;33m([0m[0mf[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 383[1;33m     [1;32mreturn[0m [0m_call_unconverted[0m[1;33m([0m[0mf[0m[1;33m,[0m [0margs[0m[1;33m,[0m [0mkwargs[0m[1;33m,[0m [0moptions[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    384[0m [1;33m[0m[0m
+[0;32m    385[0m   [1;31m# internal_convert_user_code is for example turned off when issuing a dynamic[0m[1;33m[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py[0m in [0;36m_call_unconverted[1;34m(f, args, kwargs, options, update_cache)[0m
+[0;32m    462[0m [1;33m[0m[0m
+[0;32m    463[0m   [1;32mif[0m [0mkwargs[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 464[1;33m     [1;32mreturn[0m [0mf[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    465[0m   [1;32mreturn[0m [0mf[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    466[0m [1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\keras\utils\traceback_utils.py[0m in [0;36merror_handler[1;34m(*args, **kwargs)[0m
+[0;32m     65[0m     [1;32mexcept[0m [0mException[0m [1;32mas[0m [0me[0m[1;33m:[0m  [1;31m# pylint: disable=broad-except[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     66[0m       [0mfiltered_tb[0m [1;33m=[0m [0m_process_traceback_frames[0m[1;33m([0m[0me[0m[1;33m.[0m[0m__traceback__[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 67[1;33m       [1;32mraise[0m [0me[0m[1;33m.[0m[0mwith_traceback[0m[1;33m([0m[0mfiltered_tb[0m[1;33m)[0m [1;32mfrom[0m [1;32mNone[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     68[0m     [1;32mfinally[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     69[0m       [1;32mdel[0m [0mfiltered_tb[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m    697[0m       [1;32mexcept[0m [0mException[0m [1;32mas[0m [0me[0m[1;33m:[0m  [1;31m# pylint:disable=broad-except[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    698[0m         [1;32mif[0m [0mhasattr[0m[1;33m([0m[0me[0m[1;33m,[0m [1;34m'ag_error_metadata'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 699[1;33m           [1;32mraise[0m [0me[0m[1;33m.[0m[0mag_error_metadata[0m[1;33m.[0m[0mto_exception[0m[1;33m([0m[0me[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    700[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    701[0m           [1;32mraise[0m[1;33m[0m[1;33m[0m[0m
+
+[1;31mTypeError[0m: Exception encountered when calling layer "item_model" (type ItemModel).
+
+in user code:
+
+    File "C:\Users\seanc\AppData\Local\Temp/ipykernel_15160/3669663950.py", line 30, in call  *
+        self.artist_text_embedding(inputs["genre"]),], axis=1)
+
+    TypeError: Only integers, slices (`:`), ellipsis (`...`), tf.newaxis (`None`) and scalar tf.int32/tf.int64 tensors are valid indices, got 'artistID'
+
+
+Call arguments received:
+  • inputs=tf.Tensor(shape=(None,), dtype=string)
+TypeError: Exception encountered when calling layer "item_model" (type ItemModel).
+
+in user code:
+
+    File "C:\Users\seanc\AppData\Local\Temp/ipykernel_15160/3669663950.py", line 30, in call  *
+        self.artist_text_embedding(inputs["genre"]),], axis=1)
+
+    TypeError: Only integers, slices (`:`), ellipsis (`...`), tf.newaxis (`None`) and scalar tf.int32/tf.int64 tensors are valid indices, got 'artistID'
+
+
+Call arguments received:
+  • inputs=tf.Tensor(shape=(None,), dtype=string)
+
