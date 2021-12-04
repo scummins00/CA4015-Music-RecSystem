@@ -210,11 +210,18 @@ artist_tot_listens = artist_tot_listens.join(other=artists, lsuffix='artistID', 
 # 
 # The helper functions in `CFUtils.py`, and the `CFModel` class provided in `CFModel.py` were designed specifically for [Recommendation System Colab](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&utm_campaign=colab-external&utm_medium=referral&utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt), meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.
 
+# In[16]:
+
+
+model = build_model(rating_matrix, num_queries=num_users, num_items=num_artists, embedding_dim=35, init_stddev=0.05)
+model.train(num_iterations=1000, learning_rate=10.0)
+
+
 # In the above graph, it can be observed that both `train_eror` and `test_error` are small values, indicating good performance of the model overall. However, we already know that the recommendations for this basic model will likely be poor.
 # 
 # Let's take a closer look at our embeddings. We'll view the embeddings near 'Adele'.
 
-# In[16]:
+# In[18]:
 
 
 item_neighbors(model,title_substring="Adele", measure='dot', items=artists)
