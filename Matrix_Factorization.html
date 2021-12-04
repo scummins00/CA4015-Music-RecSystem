@@ -704,17 +704,6 @@
 <div class="section" id="artist-total-listens-value">
 <h3>Artist Total Listens Value<a class="headerlink" href="#artist-total-listens-value" title="Permalink to this headline">¶</a></h3>
 <p>Later on we will use an artists total number of listens as part of our visualisations.</p>
-</div>
-</div>
-</div>
-<div class="section" id="collaborative-filtering-model">
-<h1>Collaborative Filtering Model<a class="headerlink" href="#collaborative-filtering-model" title="Permalink to this headline">¶</a></h1>
-<p>At this point, we are ready to build a very basic first version of our collaborative filtering model. In the below code, we will be using a modified version of the <code class="docutils literal notranslate"><span class="pre">build_model</span></code> function defined in <code class="docutils literal notranslate"><span class="pre">CFUtils.py</span></code>. We modified this function to include two extra parameters:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">num_queries</span></code> - Defined as the number of users in our case. Used to define the length of the <span class="math notranslate nohighlight">\(U\)</span> user embedding.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">num_items</span></code> - Defined as the number of artists in our case. Used to define the length of the <span class="math notranslate nohighlight">\(V\)</span> item embedding.</p></li>
-</ul>
-<p>The helper functions in <code class="docutils literal notranslate"><span class="pre">CFUtils.py</span></code>, and the <code class="docutils literal notranslate"><span class="pre">CFModel</span></code> class provided in <code class="docutils literal notranslate"><span class="pre">CFModel.py</span></code> were designed specifically for <a class="reference external" href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&amp;utm_campaign=colab-external&amp;utm_medium=referral&amp;utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt">Recommendation System Colab</a>, meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s groupby artist ID and sum weight for their total listens</span>
@@ -726,6 +715,17 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="collaborative-filtering-model">
+<h1>Collaborative Filtering Model<a class="headerlink" href="#collaborative-filtering-model" title="Permalink to this headline">¶</a></h1>
+<p>At this point, we are ready to build a very basic first version of our collaborative filtering model. In the below code, we will be using a modified version of the <code class="docutils literal notranslate"><span class="pre">build_model</span></code> function defined in <code class="docutils literal notranslate"><span class="pre">CFUtils.py</span></code>. We modified this function to include two extra parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_queries</span></code> - Defined as the number of users in our case. Used to define the length of the <span class="math notranslate nohighlight">\(U\)</span> user embedding.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_items</span></code> - Defined as the number of artists in our case. Used to define the length of the <span class="math notranslate nohighlight">\(V\)</span> item embedding.</p></li>
+</ul>
+<p>The helper functions in <code class="docutils literal notranslate"><span class="pre">CFUtils.py</span></code>, and the <code class="docutils literal notranslate"><span class="pre">CFModel</span></code> class provided in <code class="docutils literal notranslate"><span class="pre">CFModel.py</span></code> were designed specifically for <a class="reference external" href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&amp;utm_campaign=colab-external&amp;utm_medium=referral&amp;utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt">Recommendation System Colab</a>, meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build the CF model and train it.</span>
@@ -743,36 +743,39 @@ To construct input pipelines, use the `tf.data` module.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue runners were defined. You can safely remove the call to this deprecated function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000045, test_error=1.000074
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000058, test_error=1.000460
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999321, test_error=1.000059
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999322, test_error=1.000461
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998589, test_error=1.000037
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998579, test_error=1.000456
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997837, test_error=0.999996
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997818, test_error=1.000437
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997052, test_error=0.999926
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997025, test_error=1.000392
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996216, test_error=0.999811
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996186, test_error=1.000308
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995309, test_error=0.999633
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995279, test_error=1.000168
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994300, test_error=0.999364
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994278, test_error=0.999946
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993150, test_error=0.998967
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993147, test_error=0.999612
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 90: train_error=0.991840, test_error=0.999121
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_10768</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_11356</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Build the CF model and train it.</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">rating_matrix</span><span class="p">,</span> <span class="n">num_queries</span><span class="o">=</span><span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="o">=</span><span class="n">num_artists</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">init_stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">num_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
