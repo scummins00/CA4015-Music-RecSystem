@@ -1,9 +1,6 @@
 # CA4015-Music-RecSystem
 This repository hosts the Jupyter Book and accompanying files used for CA4015 Assignment 3 &amp; 4 - Music Recommender System and Neural Networks.
 
-## Required Packages
-Please find all the packages required to run this book as intended in the `requirements.txt` file.
-
 ## Building the Jupyter Book:
 1. Make changes to your book in the `main` branch.
 2. Rebuild the book with `jupyter-book build book/`
@@ -20,3 +17,6 @@ Once installed, you can build the PDF using:
 `jupyter-book build book/ --builder pdfhtml`
 
 Please find the book at: `book/_build/pdf/book`
+
+## Repository
+The repository for this assignment is publically available at https://github.com/scummins00/CA4015-Music-RecSystem.
