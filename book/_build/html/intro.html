@@ -111,13 +111,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="bibliography.html">
-   Bibliography
+  <a class="reference internal" href="conclusions.html">
+   Conclusions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="conclusions.html">
-   Conclusions
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -277,7 +277,7 @@
 <div class="section" id="collaborative-filtering">
 <h1>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">¶</a></h1>
 <p>Collaborative Filtering (CF) was a term first coined by the makers of <em>Tapestry</em>, the first recommender system.
-CF aims to solve the problem of recommending <span class="math notranslate nohighlight">\(m\)</span> items, by <span class="math notranslate nohighlight">\(n\)</span> users where the data is often represented by a <span class="math notranslate nohighlight">\(n \times m\)</span> matrix <span id="id8">[]</span>. There are two main approaches to CF, <em>neighborhood methods</em>, and <em>latent factor models</em>. The neighborhood methods compute the relationships between users, or alternatively items. Latent Factor models aim to characetrize users and items on many abstract factors infered from the rating patterns. The most successful realisations of latent factor models are based on <em>matrix facotrisation</em> (MF). <span id="id9">[<a class="reference internal" href="bibliography.html#id11">Koren <em>et al.</em>, 2009</a>]</span>. In this section, we will look at MF more closely, focusing on the aspects we will incorporate during our research.</p>
+CF aims to solve the problem of recommending <span class="math notranslate nohighlight">\(m\)</span> items, by <span class="math notranslate nohighlight">\(n\)</span> users where the data is often represented by a <span class="math notranslate nohighlight">\(n \times m\)</span> matrix <span id="id8">[<a class="reference internal" href="bibliography.html#id10">Laishram <em>et al.</em>, 2016</a>]</span>. There are two main approaches to CF, <em>neighborhood methods</em>, and <em>latent factor models</em>. The neighborhood methods compute the relationships between users, or alternatively items. Latent Factor models aim to characetrize users and items on many abstract factors infered from the rating patterns. The most successful realisations of latent factor models are based on <em>matrix facotrisation</em> (MF). <span id="id9">[<a class="reference internal" href="bibliography.html#id11">Koren <em>et al.</em>, 2009</a>]</span>. In this section, we will look at MF more closely, focusing on the aspects we will incorporate during our research.</p>
 <div class="section" id="matrix-factorisation-mf">
 <h2>Matrix Factorisation (MF)<a class="headerlink" href="#matrix-factorisation-mf" title="Permalink to this headline">¶</a></h2>
 <p>In its basic form, MF characterises querys (users) and items by vectors which are inferred from rating patterns. High correspondance between query vector and item vector results in a recommendation. The most useful data from an MF model is <em>explicit</em> feedback. This constitutes explicit input from users regarding interest in items. We refer to this as <em>rating</em> <span id="id10">[<a class="reference internal" href="bibliography.html#id11">Koren <em>et al.</em>, 2009</a>]</span>. The construction of query and item vectors intends to model user preferences as shown in the figure below.</p>
