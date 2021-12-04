@@ -160,7 +160,6 @@ print(f'our train set is: {len(test)}')
 
 
 #Basic retrieval model
-class MusicModel(tfrs.Model):
     def __init__(self, user_model, item_model):
         super().__init__()
 
@@ -193,7 +192,7 @@ class MusicModel(tfrs.Model):
 # 
 # We simply instantiate our model and compile it with an optimisation function of our choice. We will use Adagrad in this instance. We then fit the model on our training data and provide our number of epochs. Following from this, we fit the data on our test set.
 
-# In[12]:
+# In[137]:
 
 
 ### Fitting and evaluating

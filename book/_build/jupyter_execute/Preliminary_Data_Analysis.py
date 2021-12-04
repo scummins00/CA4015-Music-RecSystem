@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# In[27]:
+# In[2]:
 
 
 #Let's view the user-artist data first

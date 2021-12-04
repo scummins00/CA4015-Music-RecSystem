@@ -485,3 +485,10 @@ model.evaluate(cached_test, return_dict=True)
 # From the above output, it's clear that timestamps do not improve recommendations for this model. This is likely due to the fact that a substantial amount of the timestamps are of today's date which is throwing off the model. Perhaps a better data imputation would have been the median date observed in the data.
 # 
 # Otherwise both models seem to have reasonable performance with a positive item being returned as the top candidate 50% of the time. These models will supply a basis for our next advanced deep retrieval model.
+
+# ## Conclusions
+# In this notebook, we experimented with building a more complex deep learning framework by enhancing the input used in our query and item towers. Leveraging context features such as timestamps and text data can lead to better model performance and higher quality recommendations being produced.
+# 
+# However, we learned that proper imputation of data is an important aspect of data quality. Poorly imputated data can lead to contextual features having a negative effect on retrieval. In our case, it does not make sense to use today's timestamp in our data, as this allows the model to essentially 'see into the future'. This is an unrealisticquality of our model.
+# 
+# Although being more complex than our previos models, it still remains in its imfancy, and TFRS offers many directions to expand our model further. We will leave this for future work.
