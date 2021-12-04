@@ -53,8 +53,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Deep Neural Network Recommender System" href="Deep_Learning_Recommender_System.html" />
-    <link rel="prev" title="Preliminary Data Analysis" href="Preliminary_Data_Analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,15 +88,10 @@
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Preliminary_Data_Analysis.html">
    Preliminary Data Analysis
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Collaborative Filtering - Matrix Factorization
   </a>
  </li>
  <li class="toctree-l1">
@@ -743,36 +736,36 @@ To construct input pipelines, use the `tf.data` module.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue runners were defined. You can safely remove the call to this deprecated function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000163, test_error=0.999703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000165, test_error=0.999814
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999444, test_error=0.999709
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999460, test_error=0.999831
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998712, test_error=0.999703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998749, test_error=0.999841
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997956, test_error=0.999674
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.998021, test_error=0.999837
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997164, test_error=0.999615
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997270, test_error=0.999813
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996320, test_error=0.999511
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996484, test_error=0.999758
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995405, test_error=0.999345
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995648, test_error=0.999661
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994391, test_error=0.999093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994745, test_error=0.999505
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993241, test_error=0.998723
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993747, test_error=0.999267
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_15892</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_20452</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Build the CF model and train it.</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">rating_matrix</span><span class="p">,</span> <span class="n">num_queries</span><span class="o">=</span><span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="o">=</span><span class="n">num_artists</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">init_stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">num_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
@@ -1332,24 +1325,6 @@ WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue run
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="Preliminary_Data_Analysis.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Preliminary Data Analysis</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="Deep_Learning_Recommender_System.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Deep Neural Network Recommender System</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         
