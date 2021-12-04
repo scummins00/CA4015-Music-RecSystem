@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 chapters:
 - file: Preliminary_Data_Analysis
-- file: Matrix_Factorization
 - file: Deep_Learning_Recommender_System
 - file: Advanced_Deep_Learning_Recommender_System
 - file: conclusions
