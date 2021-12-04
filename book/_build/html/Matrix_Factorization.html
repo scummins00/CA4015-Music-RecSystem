@@ -726,6 +726,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">num_items</span></code> - Defined as the number of artists in our case. Used to define the length of the <span class="math notranslate nohighlight">\(V\)</span> item embedding.</p></li>
 </ul>
 <p>The helper functions in <code class="docutils literal notranslate"><span class="pre">CFUtils.py</span></code>, and the <code class="docutils literal notranslate"><span class="pre">CFModel</span></code> class provided in <code class="docutils literal notranslate"><span class="pre">CFModel.py</span></code> were designed specifically for <a class="reference external" href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&amp;utm_campaign=colab-external&amp;utm_medium=referral&amp;utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt">Recommendation System Colab</a>, meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.</p>
+<p><strong>NOTE</strong> I cannot get the below cell to render properly in the online book. Please view my Matrix_Facotrization.ipynb to see the model training graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">rating_matrix</span><span class="p">,</span> <span class="n">num_queries</span><span class="o">=</span><span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="o">=</span><span class="n">num_artists</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">init_stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
@@ -742,33 +743,36 @@ To construct input pipelines, use the `tf.data` module.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue runners were defined. You can safely remove the call to this deprecated function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000323, test_error=1.000147
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000060, test_error=1.000682
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999482, test_error=1.000149
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999218, test_error=1.000660
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998634, test_error=1.000146
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998363, test_error=1.000624
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997768, test_error=1.000128
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997480, test_error=1.000563
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.996870, test_error=1.000084
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.996552, test_error=1.000462
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.995924, test_error=1.000002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.995559, test_error=1.000302
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.994909, test_error=0.999864
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.994471, test_error=1.000060
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.993799, test_error=0.999645
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.993253, test_error=0.999700
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.991853, test_error=0.999177
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_17172</span><span class="o">/</span><span class="mf">2755676690.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_18420</span><span class="o">/</span><span class="mf">2755676690.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">rating_matrix</span><span class="p">,</span> <span class="n">num_queries</span><span class="o">=</span><span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="o">=</span><span class="n">num_artists</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">init_stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">num_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 
@@ -972,7 +976,7 @@ To construct input pipelines, use the `tf.data` module.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Matrix_Factorization_28_0.png" src="_images/Matrix_Factorization_28_0.png" />
+<img alt="_images/Matrix_Factorization_29_0.png" src="_images/Matrix_Factorization_29_0.png" />
 </div>
 </div>
 </div>
@@ -1009,7 +1013,7 @@ WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue run
   &#39;gravity_loss&#39;: 0.034403637}]
 </pre></div>
 </div>
-<img alt="_images/Matrix_Factorization_30_2.png" src="_images/Matrix_Factorization_30_2.png" />
+<img alt="_images/Matrix_Factorization_31_2.png" src="_images/Matrix_Factorization_31_2.png" />
 </div>
 </div>
 <div class="section" id="regularised-model-analysis">
@@ -1292,7 +1296,7 @@ WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue run
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Matrix_Factorization_36_0.png" src="_images/Matrix_Factorization_36_0.png" />
+<img alt="_images/Matrix_Factorization_37_0.png" src="_images/Matrix_Factorization_37_0.png" />
 </div>
 </div>
 </div>

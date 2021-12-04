@@ -210,6 +210,8 @@ artist_tot_listens = artist_tot_listens.join(other=artists, lsuffix='artistID', 
 # 
 # The helper functions in `CFUtils.py`, and the `CFModel` class provided in `CFModel.py` were designed specifically for [Recommendation System Colab](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/recommendation-systems/recommendation-systems.ipynb?utm_source=ss-recommendation-systems&utm_campaign=colab-external&utm_medium=referral&utm_content=recommendation-systems#scrollTo=_BlRIQJYo4tt), meaning that the length of the embedding vectors were hard-coded in. The inclusion of these two extra parameters allows us to apply this model for new use-cases. In the cell below, we will do a trial run of our model and discuss the results after.
 
+# **NOTE** I cannot get the below cell to render properly in the online book. Please view my Matrix_Facotrization.ipynb to see the model training graph.
+
 # In[16]:
 
 
