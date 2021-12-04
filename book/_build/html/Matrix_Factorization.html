@@ -743,36 +743,36 @@ To construct input pipelines, use the `tf.data` module.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:`tf.train.start_queue_runners()` was called when no queue runners were defined. You can safely remove the call to this deprecated function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000163, test_error=0.999703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 0: train_error=1.000223, test_error=1.000596
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999444, test_error=0.999709
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 10: train_error=0.999520, test_error=1.000602
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998712, test_error=0.999703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 20: train_error=0.998814, test_error=1.000605
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.997956, test_error=0.999674
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 30: train_error=0.998097, test_error=1.000599
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997164, test_error=0.999615
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 40: train_error=0.997361, test_error=1.000577
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996320, test_error=0.999511
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 50: train_error=0.996594, test_error=1.000530
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995405, test_error=0.999345
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 60: train_error=0.995782, test_error=1.000448
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994391, test_error=0.999093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 70: train_error=0.994908, test_error=1.000314
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993241, test_error=0.998723
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> iteration 80: train_error=0.993948, test_error=1.000109
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_15892</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_13928</span><span class="o">/</span><span class="mf">1265995664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Build the CF model and train it.</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">rating_matrix</span><span class="p">,</span> <span class="n">num_queries</span><span class="o">=</span><span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="o">=</span><span class="n">num_artists</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">init_stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">num_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
