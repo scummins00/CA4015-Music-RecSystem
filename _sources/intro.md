@@ -56,3 +56,5 @@ Google also regularly advice a two-tier approach to recommender systems. That is
 :width: 40%
 :align: center
 ```
+
+The TFRS package allows for the easy creation of recommender models by following simple steps. Firstly, one must inheret from the base `tfrs.Model` class, which is packaged with many utility functions. We build our objective function (*denoted as the task*) on top of this class. Using different objective functions is simply a case of swapping out a single line of code. In our examples, we will make use of the *Adaptive Gradient Algorithm* (Adagrad), which is an SGD optimiser. It works by maintaining low learning rates (usually denoted $\alpha $) for frequently occuring features, and high learning rates for less frequent features. Where we can, we will use *Root Mean Squared Error* (RMSE) as our metric for model comparison.
