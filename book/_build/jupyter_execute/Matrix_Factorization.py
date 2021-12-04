@@ -4,6 +4,18 @@
 # # Collaborative Filtering - Matrix Factorization
 # In this Notebook, we will be performing collaborative filtering using matrix factorization. The steps we will follow are detailed in the introduction. We will be using TensorFlow as our ML framework for the development of our music recommender system. Let's begin by importing our packages, and building a sparse representation of our ratings matrix.
 
+# wef,kmrsdkgfonfsdhjisrtgnhjitnhijthntrijhgntrjhgntrjgnetjgn
+# 
+# f
+# f
+# fdg
+# fd
+# g
+# fdg
+# fdg
+# fd
+# 
+
 # In[1]:
 
 
